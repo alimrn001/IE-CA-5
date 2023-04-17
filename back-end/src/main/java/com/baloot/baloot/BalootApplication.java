@@ -1,5 +1,7 @@
 package com.baloot.baloot;
 
+import com.baloot.baloot.domain.Baloot.Baloot;
+import com.baloot.baloot.services.BalootDataService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,6 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class BalootApplication {
 
     public static void main(String[] args) {
+        try {
+            BalootDataService.getInstance().importBalootDataFromAPI();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        //System.out.println("total users : " + Baloot.getInstance().getBalootUsers().size());
         SpringApplication.run(BalootApplication.class, args);
     }
 
