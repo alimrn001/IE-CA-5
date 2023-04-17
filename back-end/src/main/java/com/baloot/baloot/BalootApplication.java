@@ -26,7 +26,7 @@ public class BalootApplication {
 
     @GetMapping("/hello")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+        return String.format("Hello %s!\ntotal users in baloot are : %s", name, Baloot.getInstance().getBalootUsers().size());
     }
 
 }
