@@ -1,7 +1,7 @@
 package com.baloot.baloot.controllers.authentication;
 
 import com.baloot.baloot.domain.Baloot.Baloot;
-import com.baloot.baloot.services.authentication.LoginService;
+import com.baloot.baloot.services.authentication.LogoutService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-public class LoginController {
+public class LogoutController {
 
-    @GetMapping("/login") // must be actually @PostMapping
-    public String informLogin() {
+    @GetMapping("/logout") // must be actually @PostMapping
+    public String informLogout() {
         try {
-            return LoginService.informLogin();
+            return LogoutService.informLogout();
         }
         catch (Exception e) {
             return e.getMessage();
