@@ -13,6 +13,7 @@ public class LogoutController {
 
     @PostMapping("/logout") // must be actually @PostMapping
     public ResponseEntity informLogout() {
+        System.out.println("reached logout");
         try {
             LogoutService.handleLogout();
             return ResponseEntity.ok("ok");
