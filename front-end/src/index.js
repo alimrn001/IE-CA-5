@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { loginRouter } from "./login";
+import Login, { loginRouter } from "./login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-document.body.classList.add("bg-light");
+// document.body.classList.add("bg-light");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={loginRouter} />
+    <Login />
   </React.StrictMode>
 );
 
