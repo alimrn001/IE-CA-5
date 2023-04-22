@@ -1,11 +1,12 @@
 package com.baloot.baloot.services.authentication;
 
 import com.baloot.baloot.domain.Baloot.Baloot;
+import com.baloot.baloot.domain.Baloot.Exceptions.ForbiddenValueException;
 
 public class LoginService {
-    public static String informLogin() throws Exception {
-        Baloot.getInstance().handleLogin("amir", "1234");
-        return "You've entered login page, total users are : " + Baloot.getInstance().getBalootUsers().size() +
-                "current logged in user is : " + Baloot.getInstance().getLoggedInUsername();
+    public static void handleLogin(String username, String password) throws Exception {
+        if(username == null || password == null)
+            throw new ForbiddenValueException();
+        Baloot.getInstance().handleLogin(username, password);
     }
 }

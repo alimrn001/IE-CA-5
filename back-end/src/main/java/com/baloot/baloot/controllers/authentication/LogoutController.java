@@ -11,13 +11,14 @@ import java.io.IOException;
 @RestController
 public class LogoutController {
 
-    @GetMapping("/logout") // must be actually @PostMapping
-    public String informLogout() {
+    @PostMapping("/logout") // must be actually @PostMapping
+    public ResponseEntity informLogout() {
         try {
-            return LogoutService.informLogout();
+            LogoutService.handleLogout();
+            return ResponseEntity.ok("ok");
         }
         catch (Exception e) {
-            return e.getMessage();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
     }
 
