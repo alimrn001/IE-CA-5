@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "./nav";
-import Footer from "../footer";
+import Footer from "./footer";
 import "../../assets/styles/login-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "../../api/axios";
@@ -60,7 +60,7 @@ class Login extends Component {
 
   componentDidMount() {
     document.title = "Login";
-    document.body.classList.add("bg-light");
+    document.body.classList.add("body-bg");
     toast.configure({
       rtl: true,
       className: "text-center",

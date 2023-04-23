@@ -1,5 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css");
 
+.body-bg {
+    background-color: #F7F0E9;
+}
+
 .navbar-top {
     color: white;
 }
