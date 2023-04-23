@@ -4,6 +4,8 @@ import Footer from "./footer";
 import "../../assets/styles/login-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "../../api/axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -52,12 +54,20 @@ class Login extends Component {
       })
       .catch((error) => {
         console.log("failed");
+        toast.error("wrong username or password");
       });
   }
 
   componentDidMount() {
     document.title = "Login";
     document.body.classList.add("bg-light");
+    toast.configure({
+      rtl: true,
+      className: "text-center",
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 5000,
+      closeOnClick: true,
+    });
   }
 
   render() {
