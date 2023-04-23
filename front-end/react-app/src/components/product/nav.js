@@ -22,26 +22,21 @@ class Nav extends Component {
               Baloot
             </a>
             <ul className="navbar-nav ms-auto">
-                    <li className="nav-item">
-                        <p className="username">#{this.props.username}</p>
-                        {/* <!-- <a class="btn btn-primary btn-register-nv" href="register.html" role="button">#Marshal</a> --> */}
-                    </li>
-                </ul>
-            <ul className="navbar-nav ">
-                    <li className="nav-item">
-                        <a href="#" className="user-cart-reference">
-                            <div class="d-flex justify-content-between btn btn-primary btn-cart-nv">
-                                <div>
-                                    Cart
-                                </div>
-                                <div>
-                                    {this.props.cartItemsCount}
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+              <li className="nav-item">
+                <p className="username">#{this.props.username}</p>
+                {/* <!-- <a class="btn btn-primary btn-register-nv" href="register.html" role="button">#Marshal</a> --> */}
+              </li>
             </ul>
-
+            <ul className="navbar-nav ">
+              <li className="nav-item">
+                <a href="#" className="user-cart-reference">
+                  <div className="d-flex justify-content-between btn btn-primary btn-cart-nv">
+                    <div>Cart</div>
+                    <div>{this.props.cartItemsCount}</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </nav>
       </div>

@@ -8,7 +8,7 @@ class Footer extends Component {
     return (
       <div>
         <footer className="container-fluid fixed-bottom footer">
-          <div className="row bg-dark">
+          <div className="bg-dark">
             <div className="footer-txt">2023 @UT</div>
           </div>
         </footer>

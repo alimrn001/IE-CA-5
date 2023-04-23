@@ -50,6 +50,7 @@ class Login extends Component {
       .then((resp) => {
         if (resp.status === 200) {
           console.log("successfull");
+          window.location.href = "http://localhost:3000/product";
         }
       })
       .catch((error) => {
