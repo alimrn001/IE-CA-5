@@ -8,8 +8,7 @@ import axios from "../../api/axios";
 import imgURL from "../../assets/img/phone.png";
 import starImgURL from "../../assets/img/star.png";
 import ProductDetails from "./productDetails";
-
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Comments from "./comments";
 
 class Product extends Component {
   constructor(props) {
@@ -19,6 +18,7 @@ class Product extends Component {
       cartItemsCount: 1,
       hasSeggestion: true, //change this to false to prevent from showing recommended items
       ProductDetailsEX: {
+        productImg: imgURL,
         productName: "Huawei nova 9",
         companyName: "Huawei",
         price: "300$",
@@ -28,30 +28,49 @@ class Product extends Component {
         categories: ["Technology", "IT"],
         starImgURL: starImgURL,
       },
-      recommendedItemEx: {
-        productName: "Huawei nova 9",
-        price: "300$",
-        countLeft: 1,
-        imgURL: imgURL,
-      },
-      recommendedItemEx2: {
-        productName: "Galaxy S21 Ultra",
-        price: "1000$",
-        countLeft: 2,
-        imgURL: imgURL,
-      },
-      recommendedItemEx3: {
-        productName: "Huawei nova 9",
-        price: "300$",
-        countLeft: 1,
-        imgURL: imgURL,
-      },
-      recommendedItemEx4: {
-        productName: "Galaxy S21 Ultra",
-        price: "1000$",
-        countLeft: 2,
-        imgURL: imgURL,
-      },
+      comments: [
+        {
+          commentText: "This was awsome!!!!",
+          commentDate: "2023-03-20",
+          commentUsername: "#username",
+          commentLikes: 1,
+          commentDislikes: 1
+        },
+        {
+          commentText: "This was awfullllllllllll!!!!",
+          commentDate: "2023-03-20",
+          commentUsername: "#username",
+          commentLikes: 1,
+          commentDislikes: 1
+        }
+      ],
+      recommendedItems: [
+        {
+          productName: "Huawei nova 9",
+          price: "300$",
+          countLeft: 1,
+          imgURL: imgURL,
+        },
+        {
+          productName: "Galaxy S21 Ultra",
+          price: "1000$",
+          countLeft: 2,
+          imgURL: imgURL,
+        },
+        {
+          productName: "Huawei nova 9",
+          price: "300$",
+          countLeft: 1,
+          imgURL: imgURL,
+        },
+        {
+          productName: "Galaxy S21 Ultra",
+          price: "1000$",
+          countLeft: 2,
+          imgURL: imgURL,
+        }
+      ]
+
     };
   }
 
@@ -70,11 +89,13 @@ class Product extends Component {
         {/* <Nav username="#Marshal" cartItemsCount="1"/> */}
         <div className="container product-info-container">
           <div className="container-fluid justify-content-around">
+
+
             <div className="row d-flex">
               <div className="col-lg-6">
                 <div>
                   <img
-                    src={imgURL}
+                    src={this.state.ProductDetailsEX.productImg}
                     className="img-fluid m-3 shadow-sm main-product-img"
                     alt="pruduct picture"
                   />
@@ -85,136 +106,28 @@ class Product extends Component {
               </div>
             </div>
 
-            <div className="row comments-section bg-white m-5 p-4 shadow-sm">
-              <div className=" bg-white">
-                <div className="row pb-3">
-                  <p className="h4 text-brown">
-                    Comments <span className="text-gray">(2)</span>
-                  </p>
-                </div>
+            <Comments comments={this.state.comments}/>
 
-                <div className="row">
-                  <p className="comment-text">This was awsome!!!!</p>
-
-                  <pre className="comment-date">
-                    <span>2023-03-20</span> . <span>#username</span>
-                  </pre>
-                  <p className="text-end">
-                    <span className="text-brown">
-                      Is this comment helpful?{" "}
-                    </span>
-                    1
-                    <span>
-                      <button type="submit" className="no-border">
-                        <img
-                          src="../assets/img/icons8-thumbs-up-48 1.png"
-                          alt=""
-                        />
-                      </button>
-                    </span>
-                    1
-                    <span>
-                      <button type="submit" className="no-border">
-                        <img
-                          src="../assets/img/icons8-thumbs-up-48 2.png"
-                          alt=""
-                        />
-                      </button>
-                    </span>
-                  </p>
-                </div>
-
-                <div className="row spacer"> </div>
-
-                <div className="row">
-                  <p className="comment-text">This was awfullllllllllll!!!!</p>
-                  <pre className="comment-date">
-                    <span>2023-03-20</span> . <span>#username</span>
-                  </pre>
-                  <p className="text-end">
-                    <span className="text-brown">
-                      Is this comment helpful?{" "}
-                    </span>
-                    1
-                    <span>
-                      <button type="submit" className="no-border">
-                        <img
-                          src="../assets/img/icons8-thumbs-up-48 1.png"
-                          alt=""
-                        />
-                      </button>
-                    </span>
-                    1
-                    <span>
-                      <button type="submit" className="no-border">
-                        <img
-                          src="../assets/img/icons8-thumbs-up-48 2.png"
-                          alt=""
-                        />
-                      </button>
-                    </span>
-                  </p>
-                </div>
-
-                <div className="row spacer"> </div>
-
-                <div className="row mb-3">
-                  <form action="" method="post">
-                    <label for="opinion" className="form-label text-brown h4">
-                      Submit your opinion
-                    </label>
-                    <div className="d-flex">
-                      <div className="col-lg-11">
-                        <textarea
-                          className="form-control comment-text-input"
-                          id="opinion"
-                          rows="3"
-                          required
-                        ></textarea>
-                      </div>
-                      <div className="col-lg-1">
-                        <button
-                          className="= btn comment-submit-button"
-                          type="submit"
-                        >
-                          Post
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
             {this.state.hasSeggestion && (
               <h3 className="text-brown pb-5">You also might like...</h3>
             )}
             {this.state.hasSeggestion && (
+              
               <div className="row mt-4 gy-4 product-container mb-5">
+            
+              {this.state.recommendedItems.map((item) => (
                 <div className="col-lg-3 col-md-6">
                   <RecommendedItem
-                    recommendedItemDetails={this.state.recommendedItemEx}
+                    recommendedItemDetails={item}
                   />
                 </div>
-                <div className="col-lg-3 col-md-6">
-                  <RecommendedItem
-                    recommendedItemDetails={this.state.recommendedItemEx2}
-                  />
-                </div>
-                <div className="col-lg-3 col-md-6">
-                  <RecommendedItem
-                    recommendedItemDetails={this.state.recommendedItemEx3}
-                  />
-                </div>
-                <div className="col-lg-3 col-md-6">
-                  <RecommendedItem
-                    recommendedItemDetails={this.state.recommendedItemEx4}
-                  />
-                </div>
+              ))}
               </div>
+
             )}
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
