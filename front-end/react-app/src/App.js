@@ -15,17 +15,17 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/product">
+        <Route path="/product/:productId">
           <Product />
         </Route>
         <Route path="/notfound">
-          <Error errorCode="404"/>
+          <Error errorCode="404" />
         </Route>
         <Route path="/forbidden">
-          <Error errorCode="403"/>
+          <Error errorCode="403" />
         </Route>
         <Route path="/badrequest">
-          <Error errorCode="400"/>
+          <Error errorCode="400" />
         </Route>
         <Route path="/logout">
           <p>log out</p>
