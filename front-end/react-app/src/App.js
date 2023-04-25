@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import React, { useState } from "react";
+import User from "./components/user/user";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/product/:productId">
           <Product />
+        </Route>
+        <Route path="/user/:userId">
+          <User />
         </Route>
         <Route path="/notfound">
           <Error errorCode="404" />

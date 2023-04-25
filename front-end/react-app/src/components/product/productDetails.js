@@ -44,7 +44,7 @@ class ProductDetails extends Component {
         </div>
         <div className="d-flex justify-content-between margin-right bg-white p-2 shadow-sm card-section">
           <div className="text-brown padding-left margin-top">
-            <p className="font-800">{this.props.ProductDetails.price}</p>
+            <p className="font-800">{this.props.ProductDetails.price}$</p>
           </div>
           <div className="">
             <button className="btn add-cart-main-button" type="submit">

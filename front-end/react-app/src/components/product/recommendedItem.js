@@ -25,7 +25,7 @@ class RecommendedItem extends Component {
           <div className="row">
             <div className="col-4">
               <h4 className="p-2 text-brown">
-                {this.props.recommendedItemDetails.price}
+                {this.props.recommendedItemDetails.price}$
               </h4>
             </div>
             <div className="col-8 p-2">

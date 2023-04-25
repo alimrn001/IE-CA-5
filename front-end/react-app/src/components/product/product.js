@@ -21,7 +21,7 @@ class Product extends Component {
         productImg: imgURL,
         productName: "Huawei nova 9",
         companyName: "Huawei",
-        price: "300$",
+        price: 300,
         countLeft: 5,
         rateScore: 4.1,
         rateCount: 12,
@@ -47,25 +47,25 @@ class Product extends Component {
       recommendedItems: [
         {
           productName: "Huawei nova 9",
-          price: "300$",
+          price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
           productName: "Galaxy S21 Ultra",
-          price: "1000$",
+          price: 1000,
           countLeft: 2,
           imgURL: imgURL,
         },
         {
           productName: "Huawei nova 9",
-          price: "300$",
+          price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
           productName: "Galaxy S21 Ultra",
-          price: "1000$",
+          price: 1000,
           countLeft: 2,
           imgURL: imgURL,
         }
