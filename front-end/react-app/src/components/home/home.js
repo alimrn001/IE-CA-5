@@ -14,50 +14,58 @@ class Home extends Component {
     super(props);
     this.state = {
       availabaleFlag: false,  
-      items: [
+      itemsEx: [
         {
+            productID: 1,
           productName: "Huawei nova 9",
           price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
+            productID: 2,
           productName: "Galaxy S21 Ultra",
           price: 1000,
           countLeft: 2,
           imgURL: imgURL,
         },
         {
+            productID: 1,
           productName: "Huawei nova 9",
           price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
+            productID: 2,
           productName: "Galaxy S21 Ultra",
           price: 1000,
           countLeft: 2,
           imgURL: imgURL,
         },
         {
+            productID: 1,
             productName: "Huawei nova 9",
             price: 300,
             countLeft: 1,
             imgURL: imgURL,
           },
           {
+            productID: 2,
             productName: "Galaxy S21 Ultra",
             price: 1000,
             countLeft: 2,
             imgURL: imgURL,
           },
           {
+            productID: 1,
             productName: "Huawei nova 9",
             price: 300,
             countLeft: 1,
             imgURL: imgURL,
           },
           {
+            productID: 1,
             productName: "Huawei nova 9",
             price: 300,
             countLeft: 0,
@@ -86,7 +94,7 @@ class Home extends Component {
                     <div className="row mt-4 gy-4 product-container">
 
                         {
-                        this.state.items.map(item => (
+                        this.state.itemsEx.map(item => (
                             <Item item={item} availabaleFlag={this.state.availabaleFlag}/>
                         ))
                         }

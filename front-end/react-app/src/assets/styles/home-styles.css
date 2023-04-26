@@ -109,7 +109,7 @@ body {
 }
 
 .search-input {
-  background: url(../img/Vector\ \(1\).png) 30vh center no-repeat;
+  background: url(../img/Vector\ \(1\).png) 27vh center no-repeat;
   background-color: #f7f0e9;
   border: none;
   border-top-right-radius: 15px; 
@@ -117,7 +117,7 @@ body {
 }
 
 .search-input:focus {
-  background: url(../img/Vector\ \(1\).png) 30vh center no-repeat;
+  background: url(../img/Vector\ \(1\).png) 27vh center no-repeat;
   background-color: #f7f0e9;
 }
 

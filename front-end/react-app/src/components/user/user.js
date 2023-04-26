@@ -8,6 +8,7 @@ import spaghettiImg from "../../assets/img/spaghetti.png";
 import microphoneImg from "../../assets/img/microphone.png";
 import cartImg from "../../assets/img/Vector (2).png";
 import historyImg from "../../assets/img/Vector (3).png";
+import Footer from "./footer";
 
 
 
@@ -204,9 +205,7 @@ class User extends Component {
 
         </div>
 
-        <footer class="footer">
-            <p>2023@ut</p>
-        </footer>
+          <Footer />
 
       </div>
     );

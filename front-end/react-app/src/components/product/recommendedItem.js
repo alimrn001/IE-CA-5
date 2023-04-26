@@ -7,7 +7,7 @@ class RecommendedItem extends Component {
     return (
       <div>
         <div className="p-4 bg-white product-container">
-          <a href="product.html" className="product-refrence">
+          <a href={this.props.recommendedItemDetails.productID} className="product-refrence">
             <h4 className="text-brown">
               {this.props.recommendedItemDetails.productName}
             </h4>
@@ -15,7 +15,7 @@ class RecommendedItem extends Component {
           <p className="text-red">
             {this.props.recommendedItemDetails.countLeft} left in stock
           </p>
-          <a href="product.html">
+          <a href={this.props.recommendedItemDetails.productID}>
             <img
               src={this.props.recommendedItemDetails.imgURL}
               alt="product picture"

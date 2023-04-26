@@ -11,11 +11,11 @@ class Item extends Component {
         <div className="col-lg-3 col-md-6 col-sm-12">
             <div className="p-4 bg-white product-container">
 
-                <a href="product.html" className="product-refrence">
+                <a href={"product/" + this.props.item.productID} className="product-refrence">
                     <h4 className="text-brown">{this.props.item.productName}</h4>
                 </a>
                 <p className="product-stock-info">{this.props.item.countLeft} left in stock</p>
-                <a href="product.html"><img src={this.props.item.imgURL} alt="product picture"
+                <a href={"product/" + this.props.item.productID}><img src={this.props.item.imgURL} alt="product picture"
                         className="img-fluid" /></a>
                 <div className="row">
                     <div className="col-4">

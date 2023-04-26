@@ -4,6 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HistoryTableRow from "./historyTableRow";
 
 class HistoryTable extends Component {
+    constructor(props) {
+        super(props);
+
+      }
+    
+
+
+
 
   render() {
     return (
@@ -23,58 +31,91 @@ class HistoryTable extends Component {
                 </thead>
 
                 <tbody>
+
                     {/* {
                         this.props.historyTableData.map(
                             item => (
-                                    <tr class="spacer">
-                                        <td colspan="100"></td>
-                                    </tr>
-                            )
-                        )
-                    }
-                    {
-                        this.props.historyTableData.map(
-                            
-                            item => (
-                                <div>
-                                    <HistoryTableRow item = {item} />
-
-
-                                </div>
-                                <tr>
-                                <th scope="row"><a href="product.html"><img src={item.img} class="cart-product-img" /></a>
-                                </th>
-                                <td>
-                                <p>{item.productName}</p>
-                                </td>
-                                <td>
-                                <p>{item.categories}</p>
-                                </td>
-                                <td>
-                                <p>${item.price}</p>
-                                </td>
-                                <td>
-                                <p>{item.providerID}</p>
-                                </td>
-                                <td>
-                                <p class="text-yellow">{item.rating}</p>
-                                </td>
-                                <td>
-                                <p class="text-red">{item.inStock}</p>
-                                </td>
-                                <td>
-                                <p>{item.quantity}</p>
-                                </td>
-                            </tr>
+                                    // <tr class="spacer">
+                                    //     <td colspan="100"></td>
+                                    // </tr>
+                                    <tr class="mt-15">
+                                        
+                                        <th scope="row"><a href="product.html"><img src={item.img} class="cart-product-img" /></a>
+                                        </th>
+                                        <td>
+                                        <p>{item.productName}</p>
+                                        </td>
+                                        <td>
+                                        <p>{item.categories}</p>
+                                        </td>
+                                        <td>
+                                        <p>${item.price}</p>
+                                        </td>
+                                        <td>
+                                        <p>{item.providerID}</p>
+                                        </td>
+                                        <td>
+                                        <p class="text-yellow">{item.rating}</p>
+                                        </td>
+                                        <td>
+                                        <p class="text-red">{item.inStock}</p>
+                                        </td>
+                                        <td>
+                                        <p>{item.quantity}</p>
+                                        </td>
+                                    </tr>  
+                                    
                             )
                         )
                     } */}
-                <tr class="spacer">
+                    {
+                        this.props.historyTableData.map(
+                            
+                            (item , i) => (
+                                    // <tr class="spacer">
+                                    //     <td colspan="100"></td>
+                                    // </tr>
+
+
+                                    
+                                    <HistoryTableRow item={item} c={i}/>
+
+                                    
+                                    // <tr>
+                                    //     <th scope="row"><a href="product.html"><img src={item.img} class="cart-product-img" /></a>
+                                    //     </th>
+                                    //     <td>
+                                    //     <p>{item.productName}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p>{item.categories}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p>${item.price}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p>{item.providerID}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p class="text-yellow">{item.rating}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p class="text-red">{item.inStock}</p>
+                                    //     </td>
+                                    //     <td>
+                                    //     <p>{item.quantity}</p>
+                                    //     </td>
+                                    // </tr>
+
+                            )
+                        )
+                    }
+                {/*<tr class="spacer">
                     <td colspan="100"></td>
                 </tr>
 
 
-                <tr>
+                 <tr>
                     <th scope="row"><a href="product.html"><img src="../assets/img/spaghetti.png" class="cart-product-img" /></a>
                     </th>
                     <td>
@@ -128,7 +169,7 @@ class HistoryTable extends Component {
                     <td>
                     <p>1</p>
                     </td>
-                </tr>
+                </tr> */}
 
                 </tbody>
             </table>

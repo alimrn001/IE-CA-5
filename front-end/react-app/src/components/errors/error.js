@@ -42,7 +42,7 @@ class Error extends Component {
                 </p>
               )}
 
-              <a href="#" className="btn btn-primary home-btn">
+              <a href="/" className="btn btn-primary home-btn">
                 Home
               </a>
             </div>

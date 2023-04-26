@@ -46,24 +46,28 @@ class Product extends Component {
       ],
       recommendedItems: [
         {
+          productID: 1,
           productName: "Huawei nova 9",
           price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
+          productID: 2,
           productName: "Galaxy S21 Ultra",
           price: 1000,
           countLeft: 2,
           imgURL: imgURL,
         },
         {
+          productID: 1,
           productName: "Huawei nova 9",
           price: 300,
           countLeft: 1,
           imgURL: imgURL,
         },
         {
+          productID: 2,
           productName: "Galaxy S21 Ultra",
           price: 1000,
           countLeft: 2,
