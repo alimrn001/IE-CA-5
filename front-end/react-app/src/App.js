@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import React, { useState } from "react";
 import User from "./components/user/user";
+import Home from "./components/home/home";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/logout">
           <p>log out</p>
+        </Route>
+        <Route >
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>
