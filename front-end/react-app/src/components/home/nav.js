@@ -8,41 +8,41 @@ class Nav extends Component {
     return (
       <div>
         <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-top fixed-top shadow-sm rounded">
-                    <div class="container-fluid justify-content-between">
+                <nav className="navbar navbar-expand-lg navbar-light bg-white navbar-top fixed-top shadow-sm rounded">
+                    <div className="container-fluid justify-content-between">
 
                         <div>
-                            <a class="navbar-brand" href="#">
+                            <a className="navbar-brand" href="#">
                                 <img src={Baloot} alt="" width="55" height="55"
-                                    class="d-inline-block align-text" />
-                                <a class="app-name-navbar align-middle">Baloot</a>
+                                    className="d-inline-block align-text" />
+                                <a className="app-name-navbar align-middle">Baloot</a>
                             </a>
                         </div>
 
-                        <div class="input-group search-form">
+                        <div className="input-group search-form">
                             <form action="" method="POST">
-                                <div class="input-group mb-3">
-                                    <select class="form-select search-option" id="inputGroupSelect01">
-                                        <option selected class="search-option-item">name</option>
-                                        <option value="1" class="search-option-item">category</option>
+                                <div className="input-group mb-3">
+                                    <select className="form-select search-option" id="inputGroupSelect01">
+                                        <option selected className="search-option-item">name</option>
+                                        <option value="1" className="search-option-item">category</option>
                                     </select>
-                                    <input type="text" class="form-control-lg search-input" placeholder=" search your product ..."
+                                    <input type="text" className="form-control-lg search-input" placeholder=" search your product ..."
                                         aria-label="Text input with dropdown button" />
                                 </div>
                             </form>
                         </div>
 
-                        <div class="d-flex">
-                            <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                    <a class="btn btn-primary btn-register-nv" href="register.html" role="button">Register</a>
+                        <div className="d-flex">
+                            <ul className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <a className="btn btn-primary btn-register-nv" href="register.html" role="button">Register</a>
                                 </li>
                             </ul>
 
 
-                            <ul class="navbar-nav ">
-                                <li class="nav-item">
-                                    <a class="btn btn-primary btn-login-nv" href="login.html" role="button">Login</a>
+                            <ul className="navbar-nav ">
+                                <li className="nav-item">
+                                    <a className="btn btn-primary btn-login-nv" href="login.html" role="button">Login</a>
                                 </li>
                             </ul>
                         </div>

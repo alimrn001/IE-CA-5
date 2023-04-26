@@ -4,6 +4,9 @@ import React, { Component } from "react";
 
 class Item extends Component {
   render() {
+    if(this.props.availabaleFlag && !this.props.item.countLeft ){
+        return
+    }
     return (
         <div className="col-lg-3 col-md-6 col-sm-12">
             <div className="p-4 bg-white product-container">
