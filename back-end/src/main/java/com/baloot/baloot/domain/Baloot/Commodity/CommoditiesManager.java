@@ -136,16 +136,38 @@ public class CommoditiesManager {
     }
 
 
-    public Map<Integer, Commodity> sortCommoditiesByPrice() {
-        Map<Integer, Commodity> commodities = this.balootCommodities;
-        Collections.sort(commodities.values().stream().toList(), (commodity1, commodity2) -> commodity1.getPrice()-(commodity2.getPrice()));
-        return commodities;
-    }
+//    public Map<Integer, Commodity> sortCommoditiesByPrice() {
+//        Map<Integer, Commodity> commodities = this.balootCommodities;
+//        Collections.sort(commodities.values().stream().toList(), (commodity1, commodity2) -> commodity1.getPrice()-(commodity2.getPrice()));
+//        return commodities;
+//    }
 
 
     public void sortCommoditiesByRating() {
         List<Commodity> commoditiesList = new ArrayList<>(balootCommodities.values());
         commoditiesList = commoditiesList.stream().sorted(Comparator.comparing(Commodity::getRating)).collect(Collectors.toList());
+        clearFilters();
+        filteredCommoditiesID.clear();
+        for(Commodity commodity : commoditiesList)
+            filteredCommoditiesID.add(commodity.getId());
+        sortIsApplied = true;
+    }
+
+
+    public void sortCommoditiesByName() {
+        List<Commodity> commoditiesList = new ArrayList<>(balootCommodities.values());
+        commoditiesList = commoditiesList.stream().sorted(Comparator.comparing(Commodity::getName)).collect(Collectors.toList());
+        clearFilters();
+        filteredCommoditiesID.clear();
+        for(Commodity commodity : commoditiesList)
+            filteredCommoditiesID.add(commodity.getId());
+        sortIsApplied = true;
+    }
+
+
+    public void sortCommoditiesByPrice() {
+        List<Commodity> commoditiesList = new ArrayList<>(balootCommodities.values());
+        commoditiesList = commoditiesList.stream().sorted(Comparator.comparing(Commodity::getPrice)).collect(Collectors.toList());
         clearFilters();
         filteredCommoditiesID.clear();
         for(Commodity commodity : commoditiesList)

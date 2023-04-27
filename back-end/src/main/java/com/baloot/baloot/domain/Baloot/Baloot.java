@@ -300,6 +300,16 @@ public class Baloot {
     }
 
 
+    public void getCommoditiesSortedByName() {
+        commoditiesManager.sortCommoditiesByName();
+    }
+
+
+    public void getCommoditiesSortedByPrice() {
+        commoditiesManager.sortCommoditiesByPrice();
+    }
+
+
     public void clearSearchFilters() {
         commoditiesManager.clearFilters();
     }

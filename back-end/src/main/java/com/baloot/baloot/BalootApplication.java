@@ -2,16 +2,16 @@ package com.baloot.baloot;
 
 import com.baloot.baloot.domain.Baloot.Baloot;
 import com.baloot.baloot.domain.Baloot.Commodity.Commodity;
+import com.baloot.baloot.domain.Baloot.Exceptions.ForbiddenValueException;
 import com.baloot.baloot.domain.Baloot.Exceptions.NoLoggedInUserException;
 import com.baloot.baloot.services.BalootDataService;
+import com.baloot.baloot.services.commodities.FilterService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -42,6 +42,22 @@ public class BalootApplication {
         map.put("loggedInUsername", Baloot.getInstance().getLoggedInUsername());
         map.put("commodities", allCommodities);
         return ResponseEntity.status(HttpStatus.OK).body(map);
+    }
+    @PostMapping("/")
+    public ResponseEntity filterBalootCommodities(@RequestBody Map<String, Object> payLoad) throws IOException {
+        if(!Baloot.getInstance().userIsLoggedIn()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
+        }
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    FilterService.filterBalootCommodities(payLoad.get("task").toString(), payLoad.get("value").toString()));
+        }
+        catch (ForbiddenValueException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 }

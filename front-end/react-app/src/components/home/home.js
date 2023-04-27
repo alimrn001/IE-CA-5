@@ -118,12 +118,48 @@ class Home extends Component {
     this.getBalootCommodities();
   }
 
+  handleNameSort = () => {
+    console.log("sorting by name");
+    axios
+      .post("/", {
+        task: "sortByName",
+        value: "",
+      })
+      .then((resp) => {
+        if (resp.status === 200) {
+          let tmp = [];
+          resp.data.map((item) => {
+            tmp.push(item);
+          });
+          this.setState({
+            itemsEx: [],
+            itemsEx: tmp,
+          });
+          console.log(resp.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        if (error.response.status === 403) toast.error("Complete search form!");
+        else if (error.response.status === 400)
+          window.location.href = "http://localhost:3000/badrequest";
+      });
+  };
+
+  handlePriceSort = () => {
+    console.log("sorting by price");
+  };
+
   render() {
     return (
       <div>
         <Nav />
 
-        <Filter setAvailabaleFlag={this.setAvailabaleFlag} />
+        <Filter
+          setAvailabaleFlag={this.setAvailabaleFlag}
+          onNameSort={this.handleNameSort}
+          onPriceSort={this.handlePriceSort}
+        />
 
         <div className="container">
           <section className="container-fluid p-4">
