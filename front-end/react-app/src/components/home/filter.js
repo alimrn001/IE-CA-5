@@ -30,20 +30,20 @@ class Filter extends Component {
                   </div>
                   <div className="padding-left">
                     <button
-                      type="submit"
+                      type="button"
                       name="sort-action"
                       value="sort-by-name"
                       className="btn sellected"
-                      onClick={() => this.props.onNameSort()}
+                      onClick={() => this.props.onSort("sortByName")}
                     >
                       name
                     </button>
                     <button
-                      type="submit"
+                      type="button"
                       name="sort-action"
                       value="sort-by-price"
                       className="btn sellected-2"
-                      onClick={() => this.props.onPriceSort()}
+                      onClick={() => this.props.onSort("sortByPrice")}
                     >
                       price
                     </button>

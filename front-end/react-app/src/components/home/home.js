@@ -8,6 +8,7 @@ import Item from "./item";
 import imgURL from "../../assets/img/phone.png";
 import Filter from "./filter";
 import axios from "../../api/axios";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 class Home extends Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class Home extends Component {
           });
           this.setState(
             {
-              itemsEx: [...this.state.itemsEx, ...tmp],
+              itemsEx: tmp,
               loggedInUser: resp.data.loggedInUsername,
             },
             () => {
@@ -118,11 +119,11 @@ class Home extends Component {
     this.getBalootCommodities();
   }
 
-  handleNameSort = () => {
+  handleSort = (task) => {
     console.log("sorting by name");
     axios
       .post("/", {
-        task: "sortByName",
+        task: task,
         value: "",
       })
       .then((resp) => {
@@ -132,7 +133,7 @@ class Home extends Component {
             tmp.push(item);
           });
           this.setState({
-            itemsEx: [],
+            // itemsEx: [],
             itemsEx: tmp,
           });
           console.log(resp.data);
@@ -157,8 +158,7 @@ class Home extends Component {
 
         <Filter
           setAvailabaleFlag={this.setAvailabaleFlag}
-          onNameSort={this.handleNameSort}
-          onPriceSort={this.handlePriceSort}
+          onSort={this.handleSort}
         />
 
         <div className="container">
