@@ -20,7 +20,7 @@ class Product extends Component {
       ProductDetailsEX: {
         productImg: imgURL,
         productName: "Huawei nova 9",
-        companyName: "Huawei",
+        providerName: "Huawei",
         price: 300,
         countLeft: 5,
         rateScore: 4.1,
@@ -34,15 +34,15 @@ class Product extends Component {
           commentDate: "2023-03-20",
           commentUsername: "#username",
           commentLikes: 1,
-          commentDislikes: 1
+          commentDislikes: 1,
         },
         {
           commentText: "This was awfullllllllllll!!!!",
           commentDate: "2023-03-20",
           commentUsername: "#username",
           commentLikes: 1,
-          commentDislikes: 1
-        }
+          commentDislikes: 1,
+        },
       ],
       recommendedItems: [
         {
@@ -72,14 +72,14 @@ class Product extends Component {
           price: 1000,
           countLeft: 2,
           imgURL: imgURL,
-        }
-      ]
-
+        },
+      ],
     };
   }
 
   componentDidMount() {
-    document.title = "Product"; //change it to product name later
+    const title = this.state.ProductDetailsEX.productName;
+    document.title = title;
     document.body.classList.add("bg-light");
   }
 
@@ -93,8 +93,6 @@ class Product extends Component {
         {/* <Nav username="#Marshal" cartItemsCount="1"/> */}
         <div className="container product-info-container">
           <div className="container-fluid justify-content-around">
-
-
             <div className="row d-flex">
               <div className="col-lg-6">
                 <div>
@@ -110,24 +108,19 @@ class Product extends Component {
               </div>
             </div>
 
-            <Comments comments={this.state.comments}/>
+            <Comments comments={this.state.comments} />
 
             {this.state.hasSeggestion && (
               <h3 className="text-brown pb-5">You also might like...</h3>
             )}
             {this.state.hasSeggestion && (
-              
               <div className="row mt-4 gy-4 product-container mb-5">
-            
-              {this.state.recommendedItems.map((item) => (
-                <div className="col-lg-3 col-md-6">
-                  <RecommendedItem
-                    recommendedItemDetails={item}
-                  />
-                </div>
-              ))}
+                {this.state.recommendedItems.map((item) => (
+                  <div className="col-lg-3 col-md-6">
+                    <RecommendedItem recommendedItemDetails={item} />
+                  </div>
+                ))}
               </div>
-
             )}
           </div>
         </div>

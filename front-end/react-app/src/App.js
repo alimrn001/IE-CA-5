@@ -17,7 +17,7 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/product/:productId">
+        <Route path="/commodities/:productId">
           <Product />
         </Route>
         <Route path="/user/:userId">
@@ -35,7 +35,7 @@ function App() {
         <Route path="/logout">
           <p>log out</p>
         </Route>
-        <Route >
+        <Route>
           <Home />
         </Route>
       </Switch>

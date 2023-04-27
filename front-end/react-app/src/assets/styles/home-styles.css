@@ -54,11 +54,15 @@ body {
 
 .footer {
   background-color: #593C1C;
-  color: #F5F5F5;
   font-weight: 600;
   text-align: center;
   padding: 2px;
   width: 100vw;
+}
+
+.footer-txt {
+  color: #F5F5F5;
+  text-align: center;
 }
 
 .img-width {

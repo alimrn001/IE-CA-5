@@ -9,7 +9,7 @@ class Nav extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white navbar-top fixed-top shadow-sm rounded">
           <div className="container-fluid">
-            <a className="navbar-brand" href="home.html">
+            <a className="navbar-brand" href="/">
               <img
                 src={Baloot}
                 alt=""
@@ -18,7 +18,7 @@ class Nav extends Component {
                 className="d-inline-block align-text"
               />
             </a>
-            <a className="app-name-navbar" href="home.html">
+            <a className="app-name-navbar" href="/">
               Baloot
             </a>
 
@@ -34,14 +34,15 @@ class Nav extends Component {
               </li>
             </ul>
             <ul className="navbar-nav">
-                <li className="nav-item">
-                    <a 
-                        className="btn btn-primary btn-login-nv"   
-                        href="login" 
-                        role="button">
-                            Login
-                    </a>
-                </li>
+              <li className="nav-item">
+                <a
+                  className="btn btn-primary btn-login-nv"
+                  href="login"
+                  role="button"
+                >
+                  Login
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
