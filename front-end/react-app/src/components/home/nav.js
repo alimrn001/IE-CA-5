@@ -19,8 +19,8 @@ class Nav extends Component {
                     height="55"
                     className="d-inline-block align-text"
                   />
-                  <a className="app-name-navbar align-middle">Baloot</a>
                 </a>
+                <a className="app-name-navbar align-middle">Baloot</a>
               </div>
 
               <div className="input-group search-form">

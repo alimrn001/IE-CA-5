@@ -18,18 +18,21 @@ public class Commodity {
 
     private int inStock;
 
+    private String image;
+
     private int numOfRatings;
 
     private ArrayList<Integer> comments = new ArrayList<>();
 
 
-    public Commodity(int id, String name, int providerId, int price, ArrayList<String> categories, double rating, int inStock) {
+    public Commodity(int id, String name, int providerId, int price, ArrayList<String> categories, double rating, int inStock, String image) {
         this.id = id;
         this.name = name;
         this.providerId = providerId;
         this.price = price;
         this.categories = categories;
         this.rating = rating;
+        this.image = image;
         this.inStock = inStock;
         this.numOfRatings = 1;
     }
@@ -69,6 +72,10 @@ public class Commodity {
 
     public void setInStock(int inStock) {
         this.inStock = inStock;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setComments(ArrayList<Integer> comments) {
@@ -124,6 +131,10 @@ public class Commodity {
 
     public int getInStock() {
         return inStock;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public ArrayList<Integer> getComments() {
