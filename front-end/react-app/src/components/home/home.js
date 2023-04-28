@@ -141,20 +141,43 @@ class Home extends Component {
       })
       .catch((error) => {
         console.log(error.response.data);
-        if (error.response.status === 403) toast.error("Complete search form!");
-        else if (error.response.status === 400)
+        if (error.response.status === 400) {
           window.location.href = "http://localhost:3000/badrequest";
+        }
       });
   };
 
-  handlePriceSort = () => {
-    console.log("sorting by price");
+  handleSearch = (field, value) => {
+    console.log("field : ", field, " - value : ", value);
+    let searchField = "";
+    if (field === "name") {
+      searchField = "searchByName";
+    } else if (field === "category") {
+      searchField = "searchByCategory";
+    }
+    axios
+      .post("/", {
+        task: searchField,
+        value: value,
+      })
+      .then((resp) => {
+        // window.location.href = "http://localhost:3000/badrequest";
+        console.log(resp.status);
+        if (resp.status === 200) {
+          window.location.href = "http://localhost:3000/badrequest";
+          console.log(resp.data);
+        }
+      })
+      .catch((error) => {
+        window.location.href = "http://localhost:3000/notfound";
+        console.log("error");
+      });
   };
 
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onSearch={this.handleSearch} />
 
         <Filter
           setAvailabaleFlag={this.setAvailabaleFlag}

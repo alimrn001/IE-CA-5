@@ -1,9 +1,44 @@
 import "../../assets/styles/product-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Baloot from "../../assets/img/Baloot.svg";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+
+const searchOptions = ["name", "category"];
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchField: "name",
+      searchValue: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSearchValueChange = this.handleSearchValueChange.bind(this);
+  }
+
+  handleChange(e) {
+    console.log("selecting new search field!");
+    this.setState({ searchField: e.target.value }, () => {
+      console.log(this.state.searchField);
+    });
+  }
+
+  handleSearchValueChange(e) {
+    this.setState({ searchValue: e.target.value }, () => {
+      console.log(this.state.searchValue);
+    });
+  }
+
+  handleSubmit() {
+    console.log(
+      "searching ",
+      this.state.searchValue,
+      " with field ",
+      this.state.searchField
+    );
+  }
+
   render() {
     return (
       <div>
@@ -24,24 +59,31 @@ class Nav extends Component {
               </div>
 
               <div className="input-group search-form">
-                <form action="" method="POST">
+                <form
+                  onSubmit={() =>
+                    this.props.onSearch(
+                      this.state.searchField,
+                      this.state.searchValue
+                    )
+                  }
+                >
                   <div className="input-group mb-3">
                     <select
                       className="form-select search-option"
                       id="inputGroupSelect01"
+                      onChange={this.handleChange}
                     >
-                      <option selected className="search-option-item">
-                        name
-                      </option>
-                      <option value="1" className="search-option-item">
-                        category
-                      </option>
+                      {searchOptions.map((option) => (
+                        <option value={option}>{option}</option>
+                      ))}
                     </select>
                     <input
                       type="text"
                       className="form-control-lg search-input"
                       placeholder=" search your product ..."
                       aria-label="Text input with dropdown button"
+                      value={this.state.searchValue}
+                      onChange={this.handleSearchValueChange}
                     />
                   </div>
                 </form>
