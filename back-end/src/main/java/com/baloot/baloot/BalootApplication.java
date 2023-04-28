@@ -46,11 +46,11 @@ public class BalootApplication {
     @PostMapping("/")
     public ResponseEntity filterBalootCommodities(@RequestBody Map<String, Object> payLoad) throws IOException {
         if(!Baloot.getInstance().userIsLoggedIn()) {
-            System.out.println("unauthorized!");
+//            System.out.println("unauthorized!");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
         }
         try {
-            System.out.println(payLoad.get("task").toString() + "," + payLoad.get("value").toString() + " to be searched!");
+//            System.out.println(payLoad.get("task").toString() + "," + payLoad.get("value").toString() + " to be searched!");
             return ResponseEntity.status(HttpStatus.OK).body(
                     FilterService.filterBalootCommodities(payLoad.get("task").toString(), payLoad.get("value").toString()));
         }

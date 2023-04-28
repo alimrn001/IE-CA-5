@@ -78,6 +78,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
+    console.log("id : ", this.props.match.params.productId);
     const title = this.state.ProductDetailsEX.productName;
     document.title = title;
     document.body.classList.add("bg-light");
@@ -109,7 +110,6 @@ class Product extends Component {
             </div>
 
             <Comments comments={this.state.comments} />
-
             {this.state.hasSeggestion && (
               <h3 className="text-brown pb-5">You also might like...</h3>
             )}

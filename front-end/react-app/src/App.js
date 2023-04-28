@@ -17,26 +17,35 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/commodities/:productId">
-          <Product />
-        </Route>
+
+        <Route path="/commodities/:productId" component={Product} />
+
         <Route path="/user/:userId">
           <User />
         </Route>
+
         <Route path="/notfound">
           <Error errorCode="404" />
         </Route>
+
         <Route path="/forbidden">
           <Error errorCode="403" />
         </Route>
+
         <Route path="/badrequest">
           <Error errorCode="400" />
         </Route>
+
         <Route path="/logout">
           <p>log out</p>
         </Route>
-        <Route>
+
+        <Route exact path="/">
           <Home />
+        </Route>
+
+        <Route path="*">
+          <Error errorCode="404" />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -20,23 +20,14 @@ class Nav extends Component {
   handleChange(e) {
     console.log("selecting new search field!");
     this.setState({ searchField: e.target.value }, () => {
-      console.log(this.state.searchField);
+      // console.log(this.state.searchField);
     });
   }
 
   handleSearchValueChange(e) {
     this.setState({ searchValue: e.target.value }, () => {
-      console.log(this.state.searchValue);
+      // console.log(this.state.searchValue);
     });
-  }
-
-  handleSubmit() {
-    console.log(
-      "searching ",
-      this.state.searchValue,
-      " with field ",
-      this.state.searchField
-    );
   }
 
   render() {
