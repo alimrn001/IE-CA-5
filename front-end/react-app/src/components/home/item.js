@@ -24,6 +24,7 @@ class Item extends Component {
               src={this.props.item.image}
               alt="product picture"
               className="img-fluid"
+              style={{ height: "150px", width: "100%" }}
             />
           </a>
           <div className="row">
