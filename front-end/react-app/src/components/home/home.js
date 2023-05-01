@@ -156,9 +156,11 @@ class Home extends Component {
       searchField = "searchByCategory";
     }
     axios
-      .post("/", {
-        task: searchField,
-        value: value,
+      .get("/search", {
+        params: {
+          field: searchField,
+          value: value,
+        },
       })
       .then((resp) => {
         // window.location.href = "http://localhost:3000/badrequest";

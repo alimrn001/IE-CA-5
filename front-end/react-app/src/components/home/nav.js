@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Baloot from "../../assets/img/Baloot.svg";
 import React, { Component, useState } from "react";
 
-const searchOptions = ["name", "category"];
+const searchOptions = ["name", "category", "provider"];
 
 class Nav extends Component {
   constructor(props) {

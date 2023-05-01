@@ -29,7 +29,6 @@ public class commoditiesController {
     public ResponseEntity getCommodity(@PathVariable String commodityId) throws IOException {
         if(!Baloot.getInstance().userIsLoggedIn())
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User must be logged in!");
-        System.out.println("recieved" + commodityId);
         try {
             Map<String, Object> responseMap = new HashMap<>();
             String loggedInUsername = Baloot.getInstance().getLoggedInUsername();

@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import User from "./components/user/user";
 import Home from "./components/home/home";
 import Provider from "./components/provider/provider";
+import Logout from "./components/logout/logout";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
         </Route>
 
         <Route path="/logout">
-          <p>log out</p>
+          <Logout />
         </Route>
 
         <Route exact path="/">

@@ -11,15 +11,15 @@ import java.io.IOException;
 @RestController
 public class LogoutController {
 
-    @PostMapping("/logout") // must be actually @PostMapping
-    public ResponseEntity informLogout() {
+    @PostMapping("/logout")
+    public ResponseEntity logout() {
         System.out.println("reached logout");
         try {
             LogoutService.handleLogout();
             return ResponseEntity.ok("ok");
         }
         catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.OK).body(e.getMessage()); //ignoring the fact that user might not be logged in!
         }
     }
 
