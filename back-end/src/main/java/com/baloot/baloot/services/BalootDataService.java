@@ -26,7 +26,7 @@ public class BalootDataService {
 
     final static String usersURL = "http://5.253.25.110:5000/api/users";
 
-    final static String providersURL = "http://5.253.25.110:5000/api/providers";
+    final static String providersURL = "http://5.253.25.110:5000/api/v2/providers";
 
     final static String commoditiesURL = "http://5.253.25.110:5000/api/v2/commodities";
 

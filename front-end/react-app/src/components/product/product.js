@@ -16,69 +16,101 @@ class Product extends Component {
     this.state = {
       username: "username",
       cartItemsCount: 1,
-      hasSeggestion: true, //change this to false to prevent from showing recommended items
+      hasSuggestion: true, //change this to false to prevent from showing recommended items
       ProductDetailsEX: {
-        productImg: imgURL,
-        productName: "Huawei nova 9",
-        providerName: "Huawei",
-        price: 300,
-        countLeft: 5,
-        rateScore: 4.1,
-        rateCount: 12,
-        categories: ["Technology", "IT"],
+        productImg: "",
+        productName: "",
+        providerName: "",
+        providerId: 0,
+        price: 0,
+        countLeft: 0,
+        rateScore: 0,
+        rateCount: 0,
+        categories: [],
         starImgURL: starImgURL,
       },
-      comments: [
-        {
-          commentText: "This was awsome!!!!",
-          commentDate: "2023-03-20",
-          commentUsername: "#username",
-          commentLikes: 1,
-          commentDislikes: 1,
-        },
-        {
-          commentText: "This was awfullllllllllll!!!!",
-          commentDate: "2023-03-20",
-          commentUsername: "#username",
-          commentLikes: 1,
-          commentDislikes: 1,
-        },
-      ],
-      recommendedItems: [
-        {
-          productID: 1,
-          productName: "Huawei nova 9",
-          price: 300,
-          countLeft: 1,
-          imgURL: imgURL,
-        },
-        {
-          productID: 2,
-          productName: "Galaxy S21 Ultra",
-          price: 1000,
-          countLeft: 2,
-          imgURL: imgURL,
-        },
-        {
-          productID: 1,
-          productName: "Huawei nova 9",
-          price: 300,
-          countLeft: 1,
-          imgURL: imgURL,
-        },
-        {
-          productID: 2,
-          productName: "Galaxy S21 Ultra",
-          price: 1000,
-          countLeft: 2,
-          imgURL: imgURL,
-        },
-      ],
+
+      comments: [],
+      // comments: [
+      //   {
+      //     commentText: "This was awsome!!!!",
+      //     commentDate: "2023-03-20",
+      //     commentUsername: "#username",
+      //     commentLikes: 1,
+      //     commentDislikes: 1,
+      //   },
+      //   {
+      //     commentText: "This was awfullllllllllll!!!!",
+      //     commentDate: "2023-03-20",
+      //     commentUsername: "#username",
+      //     commentLikes: 1,
+      //     commentDislikes: 1,
+      //   },
+      // ],
+      recommendedItems: [],
     };
+  }
+
+  getBalootCommodity() {
+    axios
+      .get(`commodities/${this.props.match.params.productId}`)
+      .then((resp) => {
+        if (resp.status === 200) {
+          let categories = [];
+          let recommended = [];
+          let comments = [];
+          Object.keys(resp.data.commodity.categories).forEach((category) => {
+            categories.push(resp.data.commodity.categories[category]);
+          });
+          Object.keys(resp.data.recommended).forEach((item) => {
+            recommended.push(resp.data.recommended[item]);
+          });
+          Object.keys(resp.data.comments).forEach((comment) => {
+            comments.push(resp.data.comments[comment]);
+          });
+          let username = resp.data.loggedInUsername;
+          console.log(resp.data.commodity);
+
+          console.log(resp.data.commodity.numOfRatings, " is name");
+
+          this.setState(
+            {
+              ProductDetailsEX: {
+                productImg: resp.data.commodity.image,
+                productName: resp.data.commodity.name,
+                providerName: resp.data.providerName,
+                providerId: resp.data.commodity.providerId,
+                price: resp.data.commodity.price,
+                countLeft: resp.data.commodity.inStock,
+                rateScore: resp.data.commodity.rating,
+                rateCount: resp.data.commodity.numOfRatings,
+                categories: categories,
+                starImgURL: starImgURL,
+              },
+              username: username,
+              recommendedItems: recommended,
+              comments: comments,
+            },
+            () => {
+              console.log(this.state);
+            }
+          );
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location.href = "http://localhost:3000/login";
+        } else if (error.response.status === 404) {
+          window.location.href = "http://localhost:3000/notfound";
+        } else if (error.response.status === 400) {
+          window.location.href = "http://localhost:3000/badrequest";
+        }
+      });
   }
 
   componentDidMount() {
     console.log("id : ", this.props.match.params.productId);
+    this.getBalootCommodity();
     const title = this.state.ProductDetailsEX.productName;
     document.title = title;
     document.body.classList.add("bg-light");
@@ -110,10 +142,10 @@ class Product extends Component {
             </div>
 
             <Comments comments={this.state.comments} />
-            {this.state.hasSeggestion && (
+            {this.state.hasSuggestion && (
               <h3 className="text-brown pb-5">You also might like...</h3>
             )}
-            {this.state.hasSeggestion && (
+            {this.state.hasSuggestion && (
               <div className="row mt-4 gy-4 product-container mb-5">
                 {this.state.recommendedItems.map((item) => (
                   <div className="col-lg-3 col-md-6">

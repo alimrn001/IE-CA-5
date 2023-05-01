@@ -17,14 +17,17 @@ public class Provider {
 
     private ArrayList<Integer> commoditiesProvided;
 
+    private String image;
 
-    public Provider(int id, String name, String registryDate) {
+
+    public Provider(int id, String name, String registryDate, String image) {
         this.id = id;
         this.name = name;
         this.registryDate = LocalDate.parse(registryDate);
         this.commoditiesNum = 0;
         this.avgCommoditiesRate = 0;
         this.commoditiesProvided = new ArrayList<>();
+        this.image = image;
     }
 
     public void initializeGsonNullValues() {
@@ -66,6 +69,10 @@ public class Provider {
         this.avgCommoditiesRate = ((this.avgCommoditiesRate*(this.commoditiesNum-1)) + newCommodityRating)/(this.commoditiesNum);
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }
@@ -88,6 +95,10 @@ public class Provider {
 
     public ArrayList<Integer> getCommoditiesProvided() {
         return commoditiesProvided;
+    }
+
+    public String getImage() {
+        return image;
     }
 
 }

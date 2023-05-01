@@ -7,19 +7,23 @@ class RecommendedItem extends Component {
     return (
       <div>
         <div className="p-4 bg-white product-container">
-          <a href={this.props.recommendedItemDetails.productID} className="product-refrence">
+          <a
+            href={this.props.recommendedItemDetails.id}
+            className="product-refrence"
+          >
             <h4 className="text-brown">
-              {this.props.recommendedItemDetails.productName}
+              {this.props.recommendedItemDetails.name}
             </h4>
           </a>
           <p className="text-red">
-            {this.props.recommendedItemDetails.countLeft} left in stock
+            {this.props.recommendedItemDetails.inStock} left in stock
           </p>
-          <a href={this.props.recommendedItemDetails.productID}>
+          <a href={this.props.recommendedItemDetails.id}>
             <img
-              src={this.props.recommendedItemDetails.imgURL}
+              src={this.props.recommendedItemDetails.image}
               alt="product picture"
               className="img-fluid"
+              style={{ height: "150px", width: "100%" }}
             />
           </a>
           <div className="row">

@@ -31,7 +31,10 @@ class ProductDetails extends Component {
         </div>
         <div className="padding">
           <p>
-            by <a href="#">{this.props.ProductDetails.companyName}</a>
+            by{" "}
+            <a href={"../providers/" + this.props.ProductDetails.providerId}>
+              {this.props.ProductDetails.providerName}
+            </a>
           </p>
         </div>
         <p className="text-brown padding">Category(s)</p>

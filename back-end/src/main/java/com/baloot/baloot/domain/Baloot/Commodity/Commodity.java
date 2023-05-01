@@ -82,6 +82,10 @@ public class Commodity {
         this.comments = comments;
     }
 
+    public void setNumOfRatings(int numOfRatings) {
+        this.numOfRatings = numOfRatings;
+    }
+
     public void reduceInStock(int amount) {
         this.inStock -= amount;
     }
@@ -139,6 +143,10 @@ public class Commodity {
 
     public ArrayList<Integer> getComments() {
         return comments;
+    }
+
+    public int getNumOfRatings() {
+        return numOfRatings;
     }
 
     public boolean hasCategory(String category) {

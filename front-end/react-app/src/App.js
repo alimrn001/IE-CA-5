@@ -21,11 +21,11 @@ function App() {
 
         <Route path="/commodities/:productId" component={Product} />
 
-        <Route path="/user/:userId">
+        <Route path="/user">
           <User />
         </Route>
 
-        <Route path="/provider/:providerId">
+        <Route path="/providers/:providerId">
           <Provider />
         </Route>
 
