@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../assets/styles/user-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HistoryTableRow from "./historyTableRow";
+import Item from "../home/item";
 
 class HistoryTable extends Component {
     constructor(props) {

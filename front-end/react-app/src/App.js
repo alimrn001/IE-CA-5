@@ -9,6 +9,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import React, { useState } from "react";
 import User from "./components/user/user";
 import Home from "./components/home/home";
+import Provider from "./components/provider/provider";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
 
         <Route path="/user/:userId">
           <User />
+        </Route>
+
+        <Route path="/provider/:providerId">
+          <Provider />
         </Route>
 
         <Route path="/notfound">
