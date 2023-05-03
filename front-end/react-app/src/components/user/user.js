@@ -69,15 +69,14 @@ class User extends Component {
             quantity: 1
         }
       ],
-      cartCommoditiesCount: [
-        {
+      cartCommoditiesCount:  {
           commodityID: 1234,
           cartItemsCount: 1
-        }
-      ]
+      }
+      
     };
-    // this.increaseCartCommoditiesCount = this.increaseCartCommoditiesCount.bind(this);
-    // this.decreaseCartCommoditiesCount = this.decreaseCartCommoditiesCount.bind(this);
+    this.increaseCartCommoditiesCount = this.increaseCartCommoditiesCount.bind(this);
+    this.decreaseCartCommoditiesCount = this.decreaseCartCommoditiesCount.bind(this);
     this.getCartCommoditiesCount = this.getCartCommoditiesCount.bind(this);
 
   }

@@ -257,3 +257,8 @@ body {
   margin: 15px;
 
 }
+.empty-cart{
+ color: #A97B47;
+ text-align: center;
+ justify-self: center;
+}

@@ -1,8 +1,42 @@
 import React, { Component } from "react";
 import "../../assets/styles/user-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class CartTableRow extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            orderCount: 1
+        }
+    }
+    componentDidMount() {
+        toast.configure({
+          rtl: true,
+          className: "text-center",
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 5000,
+          closeOnClick: true,
+        });
+      }
+    increaseOrderCount(instock){
+        if(this.state.orderCount === instock){
+            toast.error("You can't order more than " + instock + " item from this commodity");
+            return;
+        }
+        this.setState({
+            orderCount: this.state.orderCount + 1
+        })
+    }
+    decreaseOrderCount(){
+        if(this.state.orderCount === 1){
+            return;
+        }
+        this.setState({
+            orderCount: this.state.orderCount - 1
+        })
+    }
     render() { 
         return (
             <React.Fragment>
@@ -25,9 +59,9 @@ class CartTableRow extends Component {
                         </td>
                         <td>
                             <div class="counter-btn d-flex justify-content-around">
-                                <div><button class="counter-btn-item" onClick={() => this.props.decreaseItemCount(1234)}>-</button></div>
-                                <div><button class="counter-btn-item">{this.props.getItemCount(1234)}</button></div>
-                                <div><button class="counter-btn-item" onClick={() => this.props.increaseItemCount(1234)}>+</button></div>
+                                <div><button class="counter-btn-item" onClick={() => this.decreaseOrderCount()}>-</button></div>
+                                <div><button class="counter-btn-item">{this.state.orderCount}</button></div>
+                                <div><button class="counter-btn-item" onClick={() => this.increaseOrderCount(this.props.item.inStock)}>+</button></div>
                             </div>
                             {/* <!-- <input placeholder="1" type="number" value="" min="1" class="form-control"/> --> */}
                         </td>

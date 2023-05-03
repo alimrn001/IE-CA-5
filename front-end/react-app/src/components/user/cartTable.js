@@ -22,7 +22,9 @@ class CartTable extends Component {
                     <th scope="col">In Cart</th>
                     </tr>
                 </thead>
-                <tbody>
+                {
+                    !!this.props.cartCommodities.length &&
+                    <tbody>
                     {
                         this.props.cartCommodities.map(
                             (item) => (
@@ -35,8 +37,15 @@ class CartTable extends Component {
                             )
                         )
                     }
-                </tbody>
+                </tbody> 
+                }
+
             </table>
+            {
+                !this.props.cartCommodities.length &&
+                <p className="empty-cart">your cart is empty</p>
+            }
+
         </div>
     );
   }
