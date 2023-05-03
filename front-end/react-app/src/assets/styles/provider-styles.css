@@ -257,7 +257,9 @@ input:checked+.slider:before {
 .mt-100{
   margin-top: 100px;
 }
-.provider-img{
-    text-align: center;
-    height: 35%;
+.width-35{
+    width: 35vw;
+}
+.mt-10p{
+  margin-top: 10vh;
 }

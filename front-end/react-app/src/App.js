@@ -26,7 +26,7 @@ function App() {
           <User />
         </Route>
 
-        <Route path="/providers/:providerId">
+        <Route path="/provider/:providerId">
           <Provider />
         </Route>
 
