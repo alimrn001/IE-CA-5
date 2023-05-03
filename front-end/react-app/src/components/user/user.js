@@ -4,11 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HistoryTable from "./historyTable";
 import Nav from "../product/nav";
 import UserDetails from "./userDetails";
+import phoneImg from "../../assets/img/phone.png";
 import spaghettiImg from "../../assets/img/spaghetti.png";
 import microphoneImg from "../../assets/img/microphone.png";
 import cartImg from "../../assets/img/Vector (2).png";
 import historyImg from "../../assets/img/Vector (3).png";
 import Footer from "./footer";
+import CartTable from "./cartTable";
 
 
 
@@ -25,6 +27,26 @@ class User extends Component {
         userAddress: " 20785 Schultes Avenue, Warren, MI 48091",
         budget: 10000000
       },
+      cartCommodities:[
+        {
+          img: phoneImg,
+          productName: "Galexy S21",
+          categories: ["Technology", "Phone"],
+          price: 21000000,
+          providerID: 1234,
+          rating: 8.3,
+          inStock: 17
+        },
+        {
+          img: phoneImg,
+          productName: "Galexy S21",
+          categories: ["Technology", "Phone"],
+          price: 21000000,
+          providerID: 1234,
+          rating: 8.3,
+          inStock: 17
+        }
+      ],
       historyTableData: [
         {
             img: spaghettiImg,
@@ -46,12 +68,51 @@ class User extends Component {
             inStock: 22,
             quantity: 1
         }
+      ],
+      cartCommoditiesCount: [
+        {
+          commodityID: 1234,
+          cartItemsCount: 1
+        }
       ]
-
     };
+    // this.increaseCartCommoditiesCount = this.increaseCartCommoditiesCount.bind(this);
+    // this.decreaseCartCommoditiesCount = this.decreaseCartCommoditiesCount.bind(this);
+    this.getCartCommoditiesCount = this.getCartCommoditiesCount.bind(this);
+
   }
+  getCartCommoditiesCount(commodityID){
+    // return this.state.cartCommoditiesCount[0].cartItemsCount;
+    this.state.cartCommoditiesCount.map(item => {
+      if(item.commodityID === commodityID){
+        return item.cartItemsCount;
+      }
+    })
+  }
+  increaseCartCommoditiesCount(commodityID){
+    console.log("plus");
+    this.state.cartCommoditiesCount.map(item => {
 
+      if(item.commodityID === commodityID){
+        item.cartItemsCount++;
+        // console.log(item.cartItemsCount);
 
+        // this.setState({cartCommoditiesCount});
+      }
+    })
+  }
+  decreaseCartCommoditiesCount(commodityID){
+    this.state.cartCommoditiesCount.map(item => {
+      console.log("minus");
+
+      if(item.commodityID === commodityID){
+        item.cartItemsCount--;
+        console.log(item.cartItemsCount);
+        // this.setState({cartCommoditiesCount});
+      }
+
+    })
+  }
   render() {
     return (
       <div>
@@ -61,147 +122,21 @@ class User extends Component {
         />
         <div class="container body-container">
             <UserDetails AccountDetails={this.state.AccountDetailsEX} />
-
-
             <h3 class="text-brown"><img src={cartImg} class="cart-img" alt="" /> Cart</h3>
-
+            <CartTable 
+              cartCommodities={this.state.cartCommodities}
+              getItemCount={this.getCartCommoditiesCount}
+              increaseItemCount={this.increaseCartCommoditiesCount}
+              decreaseItemCount={this.decreaseCartCommoditiesCount}
+            />
             <div class="row">
-            <div class="table-responsive custom-table-responsive">
-                <table class="table custom-table">
-                <thead>
-                    <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Categories</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Provider ID</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">In Stock</th>
-                    <th scope="col">In Cart</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="spacer">
-                    <td colspan="100"></td>
-                    </tr>
-
-                    <tr>
-                    <th scope="row"><a href="product.html"><img src="../assets/img/phone.png" class="cart-product-img" /></a>
-                    </th>
-                    <td>Galexy S21</td>
-                    <td>Technology, Phone</td>
-                    <td>$21000000</td>
-                    <td>1234</td>
-                    <td>
-                        <p class="text-yellow">8.3</p>
-                    </td>
-                    <td>
-                        <p class="text-red">17</p>
-                    </td>
-                    <td>
-                        <div class="counter-btn d-flex justify-content-around">
-                        <div><button class="counter-btn-item">-</button></div>
-                        <div><button class="counter-btn-item">1</button></div>
-                        <div><button class="counter-btn-item">+</button></div>
-                        </div>
-                        {/* <!-- <input placeholder="1" type="number" value="" min="1" class="form-control"/> --> */}
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
-            </div>
-
-            <div class="row">
-            <div>
                 <button class="btn pay-button vertical-center" type="submit">
                 Pay now!
                 </button>
             </div>
-            </div>
 
             <h3 class="text-brown mt-20"><img src={historyImg} class="cart-img" alt="" /> History</h3>
-
             <HistoryTable historyTableData={this.state.historyTableData}/>
-            {/* <div class="table-responsive">
-            <table class="table custom-table">
-                <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Categories</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Provider ID</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">In Stock</th>
-                    <th scope="col">Quantity</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr class="spacer">
-                    <td colspan="100"></td>
-                </tr>
-
-                <tr>
-                    <th scope="row"><a href="product.html"><img src="../assets/img/spaghetti.png" class="cart-product-img" /></a>
-                    </th>
-                    <td>
-                    <p>Mom's Spaghetti</p>
-                    </td>
-                    <td>
-                    <p>Food</p>
-                    </td>
-                    <td>
-                    <p>$60000</p>
-                    </td>
-                    <td>
-                    <p>313</p>
-                    </td>
-                    <td>
-                    <p class="text-yellow">10</p>
-                    </td>
-                    <td>
-                    <p class="text-red">0</p>
-                    </td>
-                    <td>
-                    <p>3</p>
-                    </td>
-                </tr>
-
-                <tr class="spacer">
-                    <td colspan="100"></td>
-                </tr>
-
-                <tr>
-                    <th scope="row"><a href="product.html"><img src="../assets/img/microphone.png" class="cart-product-img" /></a>
-                    </th>
-                    <td>
-                    <p>Dre's Microphone</p>
-                    </td>
-                    <td>
-                    <p>Technology</p>
-                    </td>
-                    <td>
-                    <p>$4200000</p>
-                    </td>
-                    <td>
-                    <p>4321</p>
-                    </td>
-                    <td>
-                    <p class="text-yellow">8.5</p>
-                    </td>
-                    <td>
-                    <p class="text-red">22</p>
-                    </td>
-                    <td>
-                    <p>1</p>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-            </div> */}
 
         </div>
 

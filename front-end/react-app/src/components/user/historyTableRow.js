@@ -7,6 +7,10 @@ class HistoryTableRow extends Component {
 
   render() {
     return (
+        <React.Fragment>
+            <tr class="spacer">
+                <td colspan="100"></td>
+            </tr>
             <tr>
                 <th scope="row"><a href="product.html"><img src={this.props.item.img} class="cart-product-img" /></a>
                 </th>
@@ -32,6 +36,7 @@ class HistoryTableRow extends Component {
                 <p>{this.props.item.quantity}</p>
                 </td>
             </tr>
+        </React.Fragment>
     );
   }
 }
