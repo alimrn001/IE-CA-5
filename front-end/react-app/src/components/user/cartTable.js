@@ -30,9 +30,7 @@ class CartTable extends Component {
                             (item) => (
                                 <CartTableRow 
                                     item={item} 
-                                    getItemCount={this.props.getItemCount}
-                                    increaseItemCount={this.props.increaseItemCount}
-                                    decreaseItemCount={this.props.decreaseItemCount}
+                                    updateItemCount={this.props.updateItemCount}
                                 />
                             )
                         )

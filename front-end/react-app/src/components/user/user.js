@@ -24,7 +24,6 @@ class User extends Component {
     super(props);
     this.state = {
       username: "username",
-      cartItemsCount: 1,
       AccountDetailsEX: {
         userName: " Marshal",
         EMail: " Marshal.Mathers@gmail.com",
@@ -34,6 +33,7 @@ class User extends Component {
       },
       cartCommodities:[
         {
+          commodityID: 313,
           img: phoneImg,
           productName: "Galexy S21",
           categories: ["Technology", "Phone"],
@@ -43,14 +43,16 @@ class User extends Component {
           inStock: 17
         },
         {
+          commodityID: 1234,
           img: phoneImg,
           productName: "Galexy S21",
           categories: ["Technology", "Phone"],
           price: 21000000,
-          providerID: 1234,
+          providerID: 313,
           rating: 8.3,
           inStock: 17
-        }
+        },
+        
       ],
       historyTableData: [
         {
@@ -77,7 +79,7 @@ class User extends Component {
       cartCommoditiesCount: [
       {
           commodityID: 1234,
-          cartItemsCount: 3
+          cartItemsCount: 1
       },
       {
         commodityID: 313,
@@ -89,108 +91,49 @@ class User extends Component {
       ]
       
     };
-    this.increaseCartCommoditiesCount = this.increaseCartCommoditiesCount.bind(this);
-    this.decreaseCartCommoditiesCount = this.decreaseCartCommoditiesCount.bind(this);
-    this.getCartCommoditiesCount = this.getCartCommoditiesCount.bind(this);
+    this.updateCartCommoditiesCount = this.updateCartCommoditiesCount.bind(this);
 
   }
-  getCartCommoditiesCount(commodityID){
-    this.state.cartCommoditiesCount.forEach((item, i) => {
-      return this.state.cartCommoditiesCount[i].cartItemsCount;
-      
-      if(item.commodityID === 313){
-        return item.cartItemsCount;
+
+  updateCartCommoditiesCount(commodityID, count){
+    this.state.cartCommoditiesCount.forEach( item => {
+      if(item.commodityID == commodityID){
+        item.cartItemsCount = count;
+        console.log(item.cartItemsCount);
       }
     })
+
+    // console.log(this.state.cartCommoditiesCount[0].cartItemsCount);
     // this.state.cartCommoditiesCount.map(item => {
     //   if(item.commodityID === commodityID){
     //     return item.cartItemsCount;
     //   }
     // })
   }
-  increaseCartCommoditiesCount(commodityID){
-    console.log("plus");
-    // this.state.cartCommoditiesCount.map(item => {
+  // componentDidUpdate(){
+  //   this.updateCartCounts();
+  // }
 
-    //   if(item.commodityID === commodityID){
-    //     item.cartItemsCount++;
-    //     // console.log(item.cartItemsCount);
 
-    //     // this.setState({cartCommoditiesCount});
-    //   }
-    // })
-  }
-  decreaseCartCommoditiesCount(commodityID){
-    // this.state.cartCommoditiesCount.map(item => {
-    //   console.log("minus");
-
-    //   if(item.commodityID === commodityID){
-    //     item.cartItemsCount--;
-    //     console.log(item.cartItemsCount);
-    //     // this.setState({cartCommoditiesCount});
-    //   }
-
-    // })
-  }
   render() {
     return (
       <div>
         <Nav
           username={this.state.username}
-          cartItemsCount={this.state.cartItemsCount}
+          cartItemsCount={this.state.cartCommodities.length}
         />
         <div class="container body-container">
             <UserDetails AccountDetails={this.state.AccountDetailsEX} />
             <h3 class="text-brown"><img src={cartImg} class="cart-img" alt="" /> Cart</h3>
             <CartTable 
               cartCommodities={this.state.cartCommodities}
-              getItemCount={this.getCartCommoditiesCount}
-              increaseItemCount={this.increaseCartCommoditiesCount}
-              decreaseItemCount={this.decreaseCartCommoditiesCount}
+              updateItemCount={this.updateCartCommoditiesCount}
             />
             <div class="row">
               <PopUp1 
                 cartCommodities={this.state.cartCommodities}
+                cartCommoditiesCount={this.state.cartCommoditiesCount}
               />
-
-
-            {/* <Popup trigger=
-                {
-                <button class="btn pay-button vertical-center" type="submit">
-                  Pay now!
-                </button> 
-                }
-                modal nested>
-                {
-                    close => (
-                        <div className='modal'>
-                          <h2>hello</h2>
-                            <div className='content'>
-                                Welcome to GFG!!!
-                            </div>
-                            <div>
-                                <button onClick=
-                                    {() => close()}>
-                                        Close modal
-                                </button>
-                            </div>
-                        </div>
-                    )
-                }
-            </Popup> */}
-
-
-
-                {/* <button className="btn pay-button vertical-center" onClick={open} type="submit">
-                Pay now!
-                </button>
-                <Modal>
-                  <div>
-                    <h1>Title</h1>
-                    <p>This is a customizable modal.</p>
-                    <button onClick={close}>CLOSE</button>
-                  </div>
-                </Modal> */}
             </div>
 
             <h3 class="text-brown mt-20"><img src={historyImg} class="cart-img" alt="" /> History</h3>
