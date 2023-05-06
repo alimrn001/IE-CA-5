@@ -146,7 +146,9 @@ public class Baloot {
             throw new UserNotExistsException();
         if(!commoditiesManager.commodityExists(commodityId))
             throw new CommodityNotExistsException();
-        commentsManager.addCommentByUserInput(username, commodityId, text);
+        int commentId = commentsManager.addCommentByUserInput(username, commodityId, text);
+        usersManager.getBalootUsers().get(username).addCommentReference(commentId);
+        commoditiesManager.getBalootCommodities().get(commodityId).addComment(commentId);
     }
 
 

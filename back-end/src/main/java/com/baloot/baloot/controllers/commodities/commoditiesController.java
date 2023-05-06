@@ -4,6 +4,7 @@ import com.baloot.baloot.domain.Baloot.Comment.Comment;
 import com.baloot.baloot.domain.Baloot.Exceptions.CommodityNotExistsException;
 import com.baloot.baloot.domain.Baloot.Baloot;
 import com.baloot.baloot.domain.Baloot.Commodity.*;
+import com.baloot.baloot.domain.Baloot.Exceptions.NoLoggedInUserException;
 import com.baloot.baloot.domain.Baloot.Provider.Provider;
 import com.baloot.baloot.services.commodities.CommentService;
 import com.baloot.baloot.services.commodities.RecommendationService;
@@ -52,4 +53,24 @@ public class commoditiesController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @PostMapping("/{commodityId}/addComment")
+    public ResponseEntity addComment(@RequestBody Map<String, Object> payLoad) {
+        if(!Baloot.getInstance().userIsLoggedIn()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
+        }
+        try {
+            System.out.println("reached here !");
+            System.out.println(payLoad.get("commodity").toString() + " : " + payLoad.get("commodity").toString());
+            String loggedInUser = Baloot.getInstance().getLoggedInUsername();
+            Baloot.getInstance().addCommentByUserInput(loggedInUser, Integer.parseInt(payLoad.get("commodity").toString()), payLoad.get("text").toString());
+            return ResponseEntity.status(HttpStatus.OK).body("ok");
+        }
+        catch (Exception e) {
+            System.out.println("ghalat");
+//            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

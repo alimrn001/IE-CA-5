@@ -8,7 +8,7 @@ class Item extends Component {
       <div className="col-lg-3 col-md-6 col-sm-12">
         <div className="p-4 bg-white product-container">
           <a
-            href={"commodities/" + this.props.item.id}
+            href={"../commodities/" + this.props.item.id}
             className="product-refrence"
           >
             <h4 className="text-brown">{this.props.item.name}</h4>
@@ -16,7 +16,7 @@ class Item extends Component {
           <p className="product-stock-info">
             {this.props.item.inStock} left in stock
           </p>
-          <a href={"commodities/" + this.props.item.id}>
+          <a href={"../commodities/" + this.props.item.id}>
             <img
               src={this.props.item.image}
               alt="product picture"

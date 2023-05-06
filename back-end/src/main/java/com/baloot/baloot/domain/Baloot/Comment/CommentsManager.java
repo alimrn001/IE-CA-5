@@ -26,11 +26,12 @@ public class CommentsManager {
         latestCommentID++;
     }
 
-    public void addCommentByUserInput(String username, int commodityId, String text) {
+    public int addCommentByUserInput(String username, int commodityId, String text) {
         Comment comment = new Comment
                 (latestCommentID+1, username, commodityId, text, LocalDate.now().toString());
         balootComments.put(comment.getCommentId(), comment);
         latestCommentID++;
+        return comment.getCommentId();
     }
 
     public void voteComment(int commentId, int vote, boolean beenLikedBefore, boolean beenDislikedBefore) throws Exception {

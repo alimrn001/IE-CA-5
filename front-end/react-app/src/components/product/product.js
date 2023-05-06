@@ -91,7 +91,7 @@ class Product extends Component {
               comments: comments,
             },
             () => {
-              console.log(this.state);
+              console.log(this.state.comments);
             }
           );
         }
@@ -113,7 +113,33 @@ class Product extends Component {
     const title = this.state.ProductDetailsEX.productName;
     document.title = title;
     document.body.classList.add("bg-light");
+    // console.log(this.state.comments);
   }
+
+  handlePostComment = (event, text) => {
+    event.preventDefault();
+    console.log(text);
+    axios
+      .post(
+        `http://localhost:8888/commodities/${this.props.match.params.productId}/addComment`,
+        {
+          commodity: this.props.match.params.productId,
+          text: text,
+        }
+      )
+      .then((resp) => {
+        if (resp.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          window.location.href = "http://localhost:3000/login";
+        } else {
+          window.location.href = "http://localhost:3000/badrequst";
+        }
+      });
+  };
 
   render() {
     return (
@@ -140,7 +166,10 @@ class Product extends Component {
               </div>
             </div>
 
-            <Comments comments={this.state.comments} />
+            <Comments
+              onPostComment={this.handlePostComment}
+              comments={this.state.comments}
+            />
             {this.state.hasSuggestion && (
               <h3 className="text-brown pb-5">You also might like...</h3>
             )}
