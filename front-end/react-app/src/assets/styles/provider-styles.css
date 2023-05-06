@@ -56,6 +56,14 @@ body {
   color: #593C1C;
 }
 
+.provider-since-date {
+  font-size: 18px;
+}
+
+.provider-since-date-container {
+  margin-top: 10px;
+}
+
 .footer {
   background-color: #593C1C;
   font-weight: 600;

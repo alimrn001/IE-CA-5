@@ -26,9 +26,7 @@ function App() {
           <User />
         </Route>
 
-        <Route path="/provider/:providerId">
-          <Provider />
-        </Route>
+        <Route path="/providers/:providerId" component={Provider} />
 
         <Route path="/notfound">
           <Error errorCode="404" />

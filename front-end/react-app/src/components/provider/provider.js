@@ -14,7 +14,7 @@ class Provider extends Component {
     this.state = {
       username: "username",
       cartItemsCount: 1,
-      providersEx:{
+      providersEx: {
         name: "Huawei",
         since: 1990,
         image: huaweiImg,
@@ -54,7 +54,8 @@ class Provider extends Component {
           price: 300,
           inStock: 1,
           image: img,
-        },        {
+        },
+        {
           id: 1,
           name: "Huawei nova 9",
           price: 300,
@@ -75,46 +76,30 @@ class Provider extends Component {
           inStock: 0,
           image: img,
         },
-        
-      ]
-
-
+      ],
     };
   }
 
-
   render() {
     return (
-      <div >
+      <div>
         <Nav
           username={this.state.username}
           cartItemsCount={this.state.cartItemsCount}
         />
 
-        
-
-
-          <div className="container">
-              <div className="row mt-4 gy-4 ">
-                  <ProviderDetails providerDetails={this.state.providersEx} />
-              </div>
-              <h3 className="text-brown pb-5 mt-10p">All provided commodities</h3>
-
-
-              <div className="row mt-4 gy-4 product-container mb-5">
-                {this.state.itemsEx.map((item) => (
-                  <Item item={item} />
-                ))}
-              </div>
-              {/* <section className="container-fluid p-4">
-                <div className="row mt-4 gy-4 product-container">
-
-                  {this.state.itemsEx.map( item => (
-                    <Item item={item} />
-                  ))}
-                </div>
-              </section> */}
+        <div className="container">
+          <div className="row mt-4 gy-4 ">
+            <ProviderDetails providerDetails={this.state.providersEx} />
           </div>
+          <h3 className="text-brown pb-5 mt-10p">All provided commodities</h3>
+
+          <div className="row mt-4 gy-4 product-container mb-5">
+            {this.state.itemsEx.map((item) => (
+              <Item item={item} />
+            ))}
+          </div>
+        </div>
 
         <Footer />
       </div>
