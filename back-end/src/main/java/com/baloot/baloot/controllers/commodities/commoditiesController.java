@@ -32,11 +32,13 @@ public class commoditiesController {
         try {
             Map<String, Object> responseMap = new HashMap<>();
             String loggedInUsername = Baloot.getInstance().getLoggedInUsername();
+            int cartSize = Baloot.getInstance().getBalootUser(loggedInUsername).getBuyList().size();
             Commodity commodity = Baloot.getInstance().getBalootCommodity(Integer.parseInt(commodityId));
             Map<Integer, Comment> comments = CommentService.getCommodityComments(Integer.parseInt(commodityId));
             Provider provider = Baloot.getInstance().getBalootProvider(commodity.getProviderId());
             List<Commodity> recommendedCommodities = RecommendationService.getRecommendedCommodities(Integer.parseInt(commodityId));
             responseMap.put("loggedInUsername", loggedInUsername);
+            responseMap.put("cartSize", cartSize);
             responseMap.put("commodity", commodity);
             responseMap.put("comments", comments);
             responseMap.put("providerName", provider.getName());

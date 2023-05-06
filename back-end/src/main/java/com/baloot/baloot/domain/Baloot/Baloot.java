@@ -330,6 +330,11 @@ public class Baloot {
     }
 
 
+    public List<Commodity> getCommoditiesByIDList(ArrayList<Integer> commoditiesID) throws Exception {
+        return new ArrayList<>(commoditiesManager.getCommoditiesByIDList(commoditiesID).values());
+    }
+
+
     public Comment getBalootComment(int commentId) throws Exception {
         return commentsManager.getBalootComment(commentId);
     }

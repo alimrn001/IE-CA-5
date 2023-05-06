@@ -10,15 +10,17 @@ class ProviderDetail extends Component {
         <div>
           <img
             className="img-fluid"
-            src={this.props.providerDetails.image}
+            src={this.props.providerDetails.providerImage}
             alt="provider picture"
           />
           <div className="provider-since-date-container d-flex justify-content-end">
             <p className="text-brown provider-since-date">
-              since {this.props.providerDetails.since}
+              since {this.props.providerDetails.providerRegistryDate}
             </p>
           </div>
-          <h3 className="text-brown">{this.props.providerDetails.name}</h3>
+          <h3 className="text-brown">
+            {this.props.providerDetails.providerName}
+          </h3>
         </div>
       </div>
     );

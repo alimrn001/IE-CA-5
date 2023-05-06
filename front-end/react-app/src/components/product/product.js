@@ -15,7 +15,7 @@ class Product extends Component {
     super(props);
     this.state = {
       username: "username",
-      cartItemsCount: 1,
+      cartItemsCount: 0,
       hasSuggestion: true, //change this to false to prevent from showing recommended items
       ProductDetailsEX: {
         productImg: "",
@@ -69,9 +69,7 @@ class Product extends Component {
             comments.push(resp.data.comments[comment]);
           });
           let username = resp.data.loggedInUsername;
-          console.log(resp.data.commodity);
-
-          console.log(resp.data.commodity.numOfRatings, " is name");
+          let cartSize = resp.data.cartSize;
 
           this.setState(
             {
@@ -88,6 +86,7 @@ class Product extends Component {
                 starImgURL: starImgURL,
               },
               username: username,
+              cartItemsCount: cartSize,
               recommendedItems: recommended,
               comments: comments,
             },
