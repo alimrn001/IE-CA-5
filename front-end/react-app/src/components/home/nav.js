@@ -51,8 +51,9 @@ class Nav extends Component {
 
               <div className="input-group search-form">
                 <form
-                  onSubmit={() =>
+                  onSubmit={(event) =>
                     this.props.onSearch(
+                      event,
                       this.state.searchField,
                       this.state.searchValue
                     )

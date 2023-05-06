@@ -147,7 +147,8 @@ class Home extends Component {
       });
   };
 
-  handleSearch = (field, value) => {
+  handleSearch = (event, field, value) => {
+    event.preventDefault();
     console.log("field : ", field, " - value : ", value);
     let searchField = "";
     if (field === "name") {
