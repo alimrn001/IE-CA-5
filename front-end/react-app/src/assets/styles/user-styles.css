@@ -262,3 +262,23 @@ body {
  text-align: center;
  justify-self: center;
 }
+
+.popup{
+  background-color: #F5F5F5 !important;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.code-holder{
+  border-radius: 10px;
+}
+.close-btn{
+  border: none;
+  background-color: transparent !important;
+  color: #c82525 !important;
+  width: 100px !important;
+  border-radius: 10px !important;
+  margin-left: 25px;
+  margin-top: 10px;
+  font-size: 18px !important;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../assets/styles/user-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import HistoryTable from "./historyTable";
 import Nav from "../product/nav";
 import UserDetails from "./userDetails";
@@ -11,7 +12,11 @@ import cartImg from "../../assets/img/Vector (2).png";
 import historyImg from "../../assets/img/Vector (3).png";
 import Footer from "./footer";
 import CartTable from "./cartTable";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+// import { useModal } from 'react-hooks-use-modal';
 
+import PopUp1 from "./popUp";
 
 
 class User extends Component {
@@ -69,10 +74,19 @@ class User extends Component {
             quantity: 1
         }
       ],
-      cartCommoditiesCount:  {
+      cartCommoditiesCount: [
+      {
           commodityID: 1234,
-          cartItemsCount: 1
+          cartItemsCount: 3
+      },
+      {
+        commodityID: 313,
+        cartItemsCount: 1
       }
+
+
+
+      ]
       
     };
     this.increaseCartCommoditiesCount = this.increaseCartCommoditiesCount.bind(this);
@@ -81,36 +95,42 @@ class User extends Component {
 
   }
   getCartCommoditiesCount(commodityID){
-    // return this.state.cartCommoditiesCount[0].cartItemsCount;
-    this.state.cartCommoditiesCount.map(item => {
-      if(item.commodityID === commodityID){
+    this.state.cartCommoditiesCount.forEach((item, i) => {
+      return this.state.cartCommoditiesCount[i].cartItemsCount;
+      
+      if(item.commodityID === 313){
         return item.cartItemsCount;
       }
     })
+    // this.state.cartCommoditiesCount.map(item => {
+    //   if(item.commodityID === commodityID){
+    //     return item.cartItemsCount;
+    //   }
+    // })
   }
   increaseCartCommoditiesCount(commodityID){
     console.log("plus");
-    this.state.cartCommoditiesCount.map(item => {
+    // this.state.cartCommoditiesCount.map(item => {
 
-      if(item.commodityID === commodityID){
-        item.cartItemsCount++;
-        // console.log(item.cartItemsCount);
+    //   if(item.commodityID === commodityID){
+    //     item.cartItemsCount++;
+    //     // console.log(item.cartItemsCount);
 
-        // this.setState({cartCommoditiesCount});
-      }
-    })
+    //     // this.setState({cartCommoditiesCount});
+    //   }
+    // })
   }
   decreaseCartCommoditiesCount(commodityID){
-    this.state.cartCommoditiesCount.map(item => {
-      console.log("minus");
+    // this.state.cartCommoditiesCount.map(item => {
+    //   console.log("minus");
 
-      if(item.commodityID === commodityID){
-        item.cartItemsCount--;
-        console.log(item.cartItemsCount);
-        // this.setState({cartCommoditiesCount});
-      }
+    //   if(item.commodityID === commodityID){
+    //     item.cartItemsCount--;
+    //     console.log(item.cartItemsCount);
+    //     // this.setState({cartCommoditiesCount});
+    //   }
 
-    })
+    // })
   }
   render() {
     return (
@@ -129,9 +149,48 @@ class User extends Component {
               decreaseItemCount={this.decreaseCartCommoditiesCount}
             />
             <div class="row">
+              <PopUp1 
+                cartCommodities={this.state.cartCommodities}
+              />
+
+
+            {/* <Popup trigger=
+                {
                 <button class="btn pay-button vertical-center" type="submit">
+                  Pay now!
+                </button> 
+                }
+                modal nested>
+                {
+                    close => (
+                        <div className='modal'>
+                          <h2>hello</h2>
+                            <div className='content'>
+                                Welcome to GFG!!!
+                            </div>
+                            <div>
+                                <button onClick=
+                                    {() => close()}>
+                                        Close modal
+                                </button>
+                            </div>
+                        </div>
+                    )
+                }
+            </Popup> */}
+
+
+
+                {/* <button className="btn pay-button vertical-center" onClick={open} type="submit">
                 Pay now!
                 </button>
+                <Modal>
+                  <div>
+                    <h1>Title</h1>
+                    <p>This is a customizable modal.</p>
+                    <button onClick={close}>CLOSE</button>
+                  </div>
+                </Modal> */}
             </div>
 
             <h3 class="text-brown mt-20"><img src={historyImg} class="cart-img" alt="" /> History</h3>
@@ -140,7 +199,6 @@ class User extends Component {
         </div>
 
           <Footer />
-
       </div>
     );
   }

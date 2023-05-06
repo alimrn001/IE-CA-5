@@ -58,9 +58,14 @@ class CartTableRow extends Component {
                             <p class="text-red">{this.props.item.inStock}</p>
                         </td>
                         <td>
-                            <div class="counter-btn d-flex justify-content-around">
+                            {/* <div class="counter-btn d-flex justify-content-around">
                                 <div><button class="counter-btn-item" onClick={() => this.decreaseOrderCount()}>-</button></div>
                                 <div><button class="counter-btn-item">{this.state.orderCount}</button></div>
+                                <div><button class="counter-btn-item" onClick={() => this.increaseOrderCount(this.props.item.inStock)}>+</button></div>
+                            </div> */}
+                            <div class="counter-btn d-flex justify-content-around">
+                                <div><button class="counter-btn-item" onClick={() => this.decreaseOrderCount()}>-</button></div>
+                                <div><button class="counter-btn-item">{this.props.getItemCount(313)}</button></div>
                                 <div><button class="counter-btn-item" onClick={() => this.increaseOrderCount(this.props.item.inStock)}>+</button></div>
                             </div>
                             {/* <!-- <input placeholder="1" type="number" value="" min="1" class="form-control"/> --> */}
