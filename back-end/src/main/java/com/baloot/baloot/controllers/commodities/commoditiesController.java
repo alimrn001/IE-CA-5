@@ -73,4 +73,21 @@ public class commoditiesController {
         }
     }
 
+    @PostMapping("/{commodityId}/voteComment")
+    public  ResponseEntity voteComment(@RequestBody Map<String, Object> payload) {
+        if(!Baloot.getInstance().userIsLoggedIn()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
+        }
+        try {
+            String loggedInUser = Baloot.getInstance().getLoggedInUsername();
+            int voteVal = Integer.parseInt(payload.get("value").toString());
+            int commentId = Integer.parseInt(payload.get("commentId").toString());
+            Baloot.getInstance().voteComment(loggedInUser, commentId, voteVal);
+            return ResponseEntity.status(HttpStatus.OK).body("OK");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

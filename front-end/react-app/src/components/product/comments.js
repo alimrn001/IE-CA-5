@@ -21,7 +21,10 @@ class Comments extends Component {
                   </p>
                 </div>
                 {this.props.comments.map((item) => (
-                  <Comment comment={item} />
+                  <Comment
+                    onVoteComment={this.props.onVoteComment}
+                    comment={item}
+                  />
                 ))}
                 <PostNewComment onPostComment={this.props.onPostComment} />
               </div>

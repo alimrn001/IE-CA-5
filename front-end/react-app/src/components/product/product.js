@@ -141,6 +141,30 @@ class Product extends Component {
       });
   };
 
+  handleVoteComment = (event, commentId, value) => {
+    event.preventDefault();
+    axios
+      .post(
+        `http://localhost:8888/commodities/${this.props.match.params.productId}/voteComment`,
+        {
+          commentId: commentId,
+          value: value,
+        }
+      )
+      .then((resp) => {
+        if (resp.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          window.location.href = "http://localhost:3000/login";
+        } else {
+          window.location.href = "http://localhost:3000/badrequst";
+        }
+      });
+  };
+
   render() {
     return (
       <div className="bg-light">
@@ -167,6 +191,7 @@ class Product extends Component {
             </div>
 
             <Comments
+              onVoteComment={this.handleVoteComment}
               onPostComment={this.handlePostComment}
               comments={this.state.comments}
             />

@@ -19,13 +19,33 @@ class Comment extends Component {
             <span className="text-brown">Is this comment helpful? </span>
             {this.props.comment.likesNo}
             <span>
-              <button type="submit" className="no-border">
+              <button
+                type="submit"
+                className="no-border"
+                onClick={(event) => {
+                  this.props.onVoteComment(
+                    event,
+                    this.props.comment.commentId,
+                    1
+                  );
+                }}
+              >
                 <img src={likeImgURL} alt="like" />
               </button>
             </span>
             {this.props.comment.dislikesNo}
             <span>
-              <button type="submit" className="no-border">
+              <button
+                type="submit"
+                className="no-border"
+                onClick={(event) => {
+                  this.props.onVoteComment(
+                    event,
+                    this.props.comment.commentId,
+                    -1
+                  );
+                }}
+              >
                 <img src={dislikeImgURL} alt="dislike" />
               </button>
             </span>
