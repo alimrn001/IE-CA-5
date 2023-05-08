@@ -157,23 +157,28 @@ class Home extends Component {
       searchField = "searchByCategory";
     }
     axios
-      .get("/search", {
-        params: {
-          field: searchField,
-          value: value,
-        },
+      .post("/", {
+        task: searchField,
+        value: value,
       })
       .then((resp) => {
         // window.location.href = "http://localhost:3000/badrequest";
         console.log(resp.status);
         if (resp.status === 200) {
-          window.location.href = "http://localhost:3000/badrequest";
+          let tmp = [];
+          resp.data.map((item) => {
+            tmp.push(item);
+          });
+          this.setState({
+            // itemsEx: [],
+            itemsEx: tmp,
+          });
           console.log(resp.data);
         }
       })
       .catch((error) => {
-        window.location.href = "http://localhost:3000/notfound";
-        console.log("error");
+        // window.location.href = "http://localhost:3000/badrequest";
+        console.log("error : " + error.status);
       });
   };
 

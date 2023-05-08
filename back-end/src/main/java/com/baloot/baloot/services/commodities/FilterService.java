@@ -19,12 +19,16 @@ public class FilterService {
             case "searchByName":
                 if(value.equals("")) // or maybe null ?!
                     throw new ForbiddenValueException();
+                if(Baloot.getInstance().searchFilterIsApplied())
+                    Baloot.getInstance().clearSearchFilters(); // this section is optional, remove it if you want to make search be applied to filter results not all commodities
                 Baloot.getInstance().getCommoditiesFilteredByName(value);
                 return Baloot.getInstance().getFilteredCommodities();
 
             case "searchByCategory":
                 if(value.equals("")) // or maybe null ?!
                     throw new ForbiddenValueException();
+                if(Baloot.getInstance().searchFilterIsApplied())
+                    Baloot.getInstance().clearSearchFilters(); // this section is optional, remove it if you want to make search be applied to filter results not all commodities
                 Baloot.getInstance().getCommoditiesFilteredByCategory(value);
                 return Baloot.getInstance().getFilteredCommodities();
         }

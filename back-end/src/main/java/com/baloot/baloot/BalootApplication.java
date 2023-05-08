@@ -37,12 +37,6 @@ public class BalootApplication {
         if(!Baloot.getInstance().userIsLoggedIn()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
         }
-//        try {
-//            Baloot.getInstance().addRemoveBuyList(Baloot.getInstance().getLoggedInUsername(), 1, true);
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
         Map<Integer, Commodity> allCommodities = Baloot.getInstance().getBalootCommodities();
         Map<String, Object> map = new HashMap<>();
         map.put("loggedInUsername", Baloot.getInstance().getLoggedInUsername());
@@ -52,7 +46,6 @@ public class BalootApplication {
     @PostMapping("/")
     public ResponseEntity filterBalootCommodities(@RequestBody Map<String, Object> payLoad) throws IOException {
         if(!Baloot.getInstance().userIsLoggedIn()) {
-//            System.out.println("unauthorized!");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
         }
         try {

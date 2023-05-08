@@ -33,13 +33,9 @@ public class Baloot {
 
     private final Map<String, Rating> balootRatings = new HashMap<>();
 
-    //private int latestCommentID = 0; //comments id start with 1
-
     private static Baloot instance;
 
     private Baloot() {}
-
-    private String currentSystemException = "";
 
 
     public static Baloot getInstance() {
@@ -74,23 +70,8 @@ public class Baloot {
     }
 
 
-    public String getCurrentSystemException() {
-        return currentSystemException;
-    }
-
-
     public int getDiscountCouponValueByCode(String discountCode) throws Exception {
         return discountCouponsManager.getDiscountCouponValueByCode(discountCode);
-    }
-
-
-    public void setCurrentSystemException(String currentSystemException) {
-        this.currentSystemException = currentSystemException;
-    }
-
-
-    public void removeSystemException() {
-        this.currentSystemException = "";
     }
 
 
