@@ -67,8 +67,7 @@ public class commoditiesController {
             return ResponseEntity.status(HttpStatus.OK).body("ok");
         }
         catch (Exception e) {
-            System.out.println("ghalat");
-//            e.printStackTrace();
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

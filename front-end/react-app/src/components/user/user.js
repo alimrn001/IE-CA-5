@@ -14,6 +14,8 @@ import Footer from "./footer";
 import CartTable from "./cartTable";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import { useModal } from 'react-hooks-use-modal';
 
 import PopUp1 from "./popUp";
@@ -123,28 +125,28 @@ class User extends Component {
           let usedCouponsId = [];
           console.log(resp.data.userInfo);
 
-          // Object.keys(resp.data.userInfo.buylist).forEach((item) => {
-          //   buylistCommoditiesId.push(resp.data.userInfo.buylist[item]);
-          // });
-          // Object.keys(resp.data.userInfo.commentsList).forEach((item) => {
-          //   commentsId.push(resp.data.userInfo.commentsList[item]);
-          // });
-          // Object.keys(resp.data.userInfo.purchasedList).forEach((item) => {
-          //   purchasedlistCommoditiesId.push(
-          //     resp.data.userInfo.purchasedList[item]
-          //   );
-          // });
-          // Object.keys(resp.data.userInfo.likedComments).forEach((item) => {
-          //   likedCommentsId.push(resp.data.userInfo.likedComments[item]);
-          // });
-          // Object.keys(resp.data.userInfo.dislikedComments).forEach((item) => {
-          //   dislikedCommentsId.push(resp.data.userInfo.dislikedComments[item]);
-          // });
-          // Object.keys(resp.data.userInfo.usedDiscountCoupons).forEach(
-          //   (item) => {
-          //     usedCouponsId.push(resp.data.userInfo.usedDiscountCoupons[item]);
-          //   }
-          // );
+          Object.keys(resp.data.userInfo.buyList).forEach((item) => {
+            buylistCommoditiesId.push(resp.data.userInfo.buylist[item]);
+          });
+          Object.keys(resp.data.userInfo.commentsList).forEach((item) => {
+            commentsId.push(resp.data.userInfo.commentsList[item]);
+          });
+          Object.keys(resp.data.userInfo.purchasedList).forEach((item) => {
+            purchasedlistCommoditiesId.push(
+              resp.data.userInfo.purchasedList[item]
+            );
+          });
+          Object.keys(resp.data.userInfo.likedComments).forEach((item) => {
+            likedCommentsId.push(resp.data.userInfo.likedComments[item]);
+          });
+          Object.keys(resp.data.userInfo.dislikedComments).forEach((item) => {
+            dislikedCommentsId.push(resp.data.userInfo.dislikedComments[item]);
+          });
+          Object.keys(resp.data.userInfo.usedDiscountCoupons).forEach(
+            (item) => {
+              usedCouponsId.push(resp.data.userInfo.usedDiscountCoupons[item]);
+            }
+          );
 
           this.setState(
             {
@@ -171,11 +173,22 @@ class User extends Component {
           );
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location.href = "http://localhost:3000/login";
+        }
+      });
   }
 
   componentDidMount() {
     this.getUserData();
+    toast.configure({
+      rtl: true,
+      className: "text-center",
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 5000,
+      closeOnClick: true,
+    });
   }
 
   updateCartCommoditiesCount(commodityID, count) {
@@ -193,9 +206,32 @@ class User extends Component {
     //   }
     // })
   }
-  // componentDidUpdate(){
-  //   this.updateCartCounts();
-  // }
+
+  addCreditToUser = (event, value) => {
+    event.preventDefault();
+    axios
+      .post("/user/addCredit", {
+        credit: value,
+      })
+      .then((resp) => {
+        if (resp.status === 200) {
+          this.setState((prevState) => {
+            let userInfo = { ...prevState.userInfo };
+            userInfo.credit = resp.data;
+            return { userInfo };
+          });
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location.href = "http://localhost:3000/login";
+        } else if (error.response.status === 403) {
+          toast.error("Please enter a valid value");
+        } else if (error.response.status === 400) {
+          window.location.href = "http://localhost:3000/badrequest";
+        }
+      });
+  };
 
   render() {
     return (
@@ -205,7 +241,10 @@ class User extends Component {
           cartItemsCount={this.state.cartCommodities.length}
         />
         <div class="container body-container">
-          <UserDetails AccountDetails={this.state.userInfo} />
+          <UserDetails
+            onAddCredit={this.addCreditToUser}
+            AccountDetails={this.state.userInfo}
+          />
           <h3 class="text-brown">
             <img src={cartImg} class="cart-img" alt="" /> Cart
           </h3>

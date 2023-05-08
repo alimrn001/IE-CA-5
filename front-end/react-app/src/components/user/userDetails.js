@@ -7,6 +7,20 @@ import calenderImg from "../../assets/img/Vector (6).png";
 import locationImg from "../../assets/img/Vector (7).png";
 
 class UserDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      creditValue: 0,
+    };
+    this.handleCreditChange = this.handleCreditChange.bind(this);
+  }
+
+  handleCreditChange(e) {
+    this.setState({ creditValue: e.target.value }, () => {
+      // console.log(this.state.searchField);
+    });
+  }
+
   render() {
     return (
       <div class="row">
@@ -36,7 +50,7 @@ class UserDetails extends Component {
                   <h1 class="">${this.props.AccountDetails.credit}</h1>
                 </div>
               </div>
-              <form action="" method="post">
+              <form action="">
                 <div class="row form-outline">
                   <input
                     type="number"
@@ -45,10 +59,18 @@ class UserDetails extends Component {
                     min="0"
                     placeholder="$Amount"
                     required
+                    value={this.state.creditValue}
+                    onChange={this.handleCreditChange}
                   ></input>
                 </div>
                 <div class="row">
-                  <button class="btn add-credit-button" type="submit">
+                  <button
+                    class="btn add-credit-button"
+                    type="submit"
+                    onClick={(event) =>
+                      this.props.onAddCredit(event, this.state.creditValue)
+                    }
+                  >
                     Add more credit
                   </button>
                 </div>

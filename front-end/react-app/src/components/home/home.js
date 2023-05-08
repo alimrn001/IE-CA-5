@@ -9,74 +9,27 @@ import imgURL from "../../assets/img/phone.png";
 import Filter from "./filter";
 import axios from "../../api/axios";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import ReactPaginate from "react-paginate";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       availabaleFlag: false,
-      // itemsEx: [
-      //   {
-      //     productID: 1,
-      //     productName: "Huawei nova 9",
-      //     price: 300,
-      //     countLeft: 1,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 2,
-      //     productName: "Galaxy S21 Ultra",
-      //     price: 1000,
-      //     countLeft: 2,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 1,
-      //     productName: "Huawei nova 9",
-      //     price: 300,
-      //     countLeft: 1,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 2,
-      //     productName: "Galaxy S21 Ultra",
-      //     price: 1000,
-      //     countLeft: 2,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 1,
-      //     productName: "Huawei nova 9",
-      //     price: 300,
-      //     countLeft: 1,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 2,
-      //     productName: "Galaxy S21 Ultra",
-      //     price: 1000,
-      //     countLeft: 2,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 1,
-      //     productName: "Huawei nova 9",
-      //     price: 300,
-      //     countLeft: 1,
-      //     imgURL: imgURL,
-      //   },
-      //   {
-      //     productID: 1,
-      //     productName: "Huawei nova 9",
-      //     price: 300,
-      //     countLeft: 0,
-      //     imgURL: imgURL,
-      //   },
-      // ],
       loggedInUser: "",
       itemsEx: [],
+      currentPage: 1,
+      commoditiesPerPage: 12,
     };
     this.setAvailabaleFlag = this.setAvailabaleFlag.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+  }
+
+  handlePageChange(event) {
+    this.setState({
+      currentPage: Number(event.target.id),
+    });
+    // window.location.reload();
   }
 
   setAvailabaleFlag() {
@@ -183,6 +136,35 @@ class Home extends Component {
   };
 
   render() {
+    // const {
+    //   availabaleFlag,
+    //   loggedInUser,
+    //   itemsEx,
+    //   currentPage,
+    //   commoditiesPerPage,
+    // } = this.state;
+
+    // console.log(currentPage + " is page no");
+    // // Logic for displaying todos
+    // const indexOfLastItem = currentPage * commoditiesPerPage;
+    // const indexOfFirstItem = indexOfLastItem - commoditiesPerPage;
+    // const currentCommodities = itemsEx.slice(indexOfFirstItem, indexOfLastItem);
+    // const pageCnt = Math.ceil(itemsEx.length / commoditiesPerPage);
+
+    // // Logic for displaying page numbers
+    // const pageNumbers = [];
+    // for (let i = 1; i <= Math.ceil(itemsEx.length / commoditiesPerPage); i++) {
+    //   pageNumbers.push(i);
+    // }
+
+    // const renderPageNumbers = pageNumbers.map((number) => {
+    //   return (
+    //     <button key={number} id={number} onClick={this.handlePageChange}>
+    //       {number}
+    //     </button>
+    //   );
+    // });
+
     return (
       <div>
         <Nav onSearch={this.handleSearch} />
@@ -199,6 +181,7 @@ class Home extends Component {
                 <Item item={item} availabaleFlag={this.state.availabaleFlag} />
               ))}
             </div>
+            {/* <ul id="page-numbers">{renderPageNumbers}</ul> */}
           </section>
         </div>
         <Footer />
