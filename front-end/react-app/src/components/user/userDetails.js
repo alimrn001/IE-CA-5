@@ -43,6 +43,11 @@ class UserDetails extends Component {
                 <img src={locationImg} class="user-info-item" alt="" />{" "}
                 {this.props.AccountDetails.address}
               </p>
+              <button class="btn logout-button">
+                <a href="../logout" class="logout-text">
+                  logout
+                </a>
+              </button>
             </div>
             <div class="col-6">
               <div class="container">

@@ -179,7 +179,7 @@ class User extends Component {
         }
       })
       .catch((error) => {
-        if (error.status === 401) {
+        if (error.response.status === 401) {
           window.location.href = "http://localhost:3000/login";
         }
       });
@@ -242,7 +242,7 @@ class User extends Component {
     return (
       <div>
         <Nav
-          username={this.state.username}
+          username={this.state.userInfo.username}
           cartItemsCount={this.state.cartCommodities.length}
         />
         <div class="container body-container">

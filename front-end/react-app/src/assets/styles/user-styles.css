@@ -102,6 +102,15 @@ body {
   margin: 0;
 }
 
+.logout-button, .logout-button:hover {
+  background-color: #593C1C;
+}
+
+.logout-text, .logout-text:hover {
+  text-decoration: none;
+  color: #F5F5F5;
+}
+
 .add-credit-button {
   background-color: #593C1C;
   margin-top: 10px;
