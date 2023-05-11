@@ -86,7 +86,7 @@ class Nav extends Component {
                   <li className="nav-item">
                     <a
                       className="btn btn-primary btn-register-nv"
-                      href="register.html"
+                      href="register"
                       role="button"
                     >
                       Register
@@ -98,7 +98,7 @@ class Nav extends Component {
                   <li className="nav-item">
                     <a
                       className="btn btn-primary btn-login-nv"
-                      href="login.html"
+                      href="login"
                       role="button"
                     >
                       Login

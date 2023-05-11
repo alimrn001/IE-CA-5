@@ -29,7 +29,7 @@ class Nav extends Component {
             </ul>
             <ul className="navbar-nav ">
               <li className="nav-item">
-                <a href="#" className="user-cart-reference">
+                <a href="../../user" className="user-cart-reference">
                   <div className="d-flex justify-content-between btn btn-primary btn-cart-nv">
                     <div>Cart</div>
                     <div>{this.props.cartItemsCount}</div>
