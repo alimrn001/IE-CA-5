@@ -44,6 +44,8 @@ public class User {
         purchasedList = new ArrayList<>();
         likedComments = new ArrayList<>();
         dislikedComments = new ArrayList<>();
+        usedDiscountCoupons = new ArrayList<>();
+        latestSelectedDiscountCode = "";
     }
 
 

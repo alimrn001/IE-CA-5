@@ -26,6 +26,7 @@ public class RegisterController {
             return ResponseEntity.status(HttpStatus.OK).body("OK");
         }
         catch (UserAlreadyExistsException e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
         catch (Exception e) {

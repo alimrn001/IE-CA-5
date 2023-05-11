@@ -13,16 +13,12 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: "",
-      // lastName: "",
       username: "",
       password: "",
       email: "",
       birthday: "",
       address: "",
     };
-    // this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    // this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -30,18 +26,6 @@ class Register extends Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // handleFirstNameChange(event) {
-  //   this.setState({
-  //     firstName: event.target.value,
-  //   });
-  // }
-
-  // handleLastNameChange(event) {
-  //   this.setState({
-  //     lastName: event.target.value,
-  //   });
-  // }
 
   handleUsernameChange(event) {
     this.setState({

@@ -126,22 +126,27 @@ class User extends Component {
           console.log(resp.data.userInfo);
 
           Object.keys(resp.data.userInfo.buyList).forEach((item) => {
-            buylistCommoditiesId.push(resp.data.userInfo.buylist[item]);
+            buylistCommoditiesId.push(resp.data.userInfo.buyList[item]);
           });
+
           Object.keys(resp.data.userInfo.commentsList).forEach((item) => {
             commentsId.push(resp.data.userInfo.commentsList[item]);
           });
+
           Object.keys(resp.data.userInfo.purchasedList).forEach((item) => {
             purchasedlistCommoditiesId.push(
               resp.data.userInfo.purchasedList[item]
             );
           });
+
           Object.keys(resp.data.userInfo.likedComments).forEach((item) => {
             likedCommentsId.push(resp.data.userInfo.likedComments[item]);
           });
+
           Object.keys(resp.data.userInfo.dislikedComments).forEach((item) => {
             dislikedCommentsId.push(resp.data.userInfo.dislikedComments[item]);
           });
+
           Object.keys(resp.data.userInfo.usedDiscountCoupons).forEach(
             (item) => {
               usedCouponsId.push(resp.data.userInfo.usedDiscountCoupons[item]);
@@ -174,7 +179,7 @@ class User extends Component {
         }
       })
       .catch((error) => {
-        if (error.response.status === 401) {
+        if (error.status === 401) {
           window.location.href = "http://localhost:3000/login";
         }
       });
