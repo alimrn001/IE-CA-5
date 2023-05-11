@@ -8,6 +8,7 @@ import com.baloot.baloot.domain.Baloot.Exceptions.NoLoggedInUserException;
 import com.baloot.baloot.domain.Baloot.Provider.Provider;
 import com.baloot.baloot.services.commodities.CommentService;
 import com.baloot.baloot.services.commodities.RecommendationService;
+import com.baloot.baloot.domain.Baloot.Exceptions.RatingOutOfRangeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -83,6 +84,30 @@ public class commoditiesController {
             int commentId = Integer.parseInt(payload.get("commentId").toString());
             Baloot.getInstance().voteComment(loggedInUser, commentId, voteVal);
             return ResponseEntity.status(HttpStatus.OK).body("OK");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/{commodityId}/rate")
+    public  ResponseEntity rateCommodity(@PathVariable String commodityId, @RequestBody Map<String, Object> payload) {
+        if(!Baloot.getInstance().userIsLoggedIn()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new NoLoggedInUserException().getMessage());
+        }
+        try {
+            String username = Baloot.getInstance().getLoggedInUsername();
+            int rating = Integer.parseInt(payload.get("value").toString());
+            Baloot.getInstance().addRating(username, Integer.parseInt(commodityId), rating);
+            double ratingScore = Baloot.getInstance().getBalootCommodity(Integer.parseInt(commodityId)).getRating();
+            int ratingCount = Baloot.getInstance().getBalootCommodity(Integer.parseInt(commodityId)).getNumOfRatings();
+            Map<String, Object> info = new HashMap<>();
+            info.put("ratingScore", ratingScore);
+            info.put("ratingCount", ratingCount);
+            return ResponseEntity.status(HttpStatus.OK).body(info);
+        }
+        catch (RatingOutOfRangeException | NumberFormatException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

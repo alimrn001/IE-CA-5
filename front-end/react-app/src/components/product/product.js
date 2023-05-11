@@ -9,7 +9,8 @@ import imgURL from "../../assets/img/phone.png";
 import starImgURL from "../../assets/img/star.png";
 import ProductDetails from "./productDetails";
 import Comments from "./comments";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 class Product extends Component {
   constructor(props) {
     super(props);
@@ -29,24 +30,7 @@ class Product extends Component {
         categories: [],
         starImgURL: starImgURL,
       },
-
       comments: [],
-      // comments: [
-      //   {
-      //     commentText: "This was awsome!!!!",
-      //     commentDate: "2023-03-20",
-      //     commentUsername: "#username",
-      //     commentLikes: 1,
-      //     commentDislikes: 1,
-      //   },
-      //   {
-      //     commentText: "This was awfullllllllllll!!!!",
-      //     commentDate: "2023-03-20",
-      //     commentUsername: "#username",
-      //     commentLikes: 1,
-      //     commentDislikes: 1,
-      //   },
-      // ],
       recommendedItems: [],
     };
   }
@@ -113,7 +97,13 @@ class Product extends Component {
     const title = this.state.ProductDetailsEX.productName;
     document.title = title;
     document.body.classList.add("bg-light");
-    // console.log(this.state.comments);
+    toast.configure({
+      rtl: true,
+      className: "text-center",
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 5000,
+      closeOnClick: true,
+    });
   }
 
   handlePostComment = (event, text) => {
@@ -165,6 +155,34 @@ class Product extends Component {
       });
   };
 
+  handleRateCommodity = (event, value) => {
+    event.preventDefault();
+    axios
+      .post(
+        `http://localhost:8888/commodities/${this.props.match.params.productId}/rate`,
+        {
+          value: value,
+        }
+      )
+      .then((resp) => {
+        if (resp.status === 200) {
+          this.setState((prevState) => {
+            let ProductDetailsEX = { ...prevState.ProductDetailsEX };
+            ProductDetailsEX.rateScore = resp.data.ratingScore;
+            ProductDetailsEX.rateCount = resp.data.ratingCount;
+            return { ProductDetailsEX };
+          });
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 403) {
+          toast.error("Rating must be between 0 to 10");
+        } else {
+          window.location.href = "http://localhost:3000/badrequest";
+        }
+      });
+  };
+
   render() {
     return (
       <div className="bg-light">
@@ -186,7 +204,10 @@ class Product extends Component {
                 </div>
               </div>
               <div className="col-lg-6 product-details">
-                <ProductDetails ProductDetails={this.state.ProductDetailsEX} />
+                <ProductDetails
+                  onAddRating={this.handleRateCommodity}
+                  ProductDetails={this.state.ProductDetailsEX}
+                />
               </div>
             </div>
 

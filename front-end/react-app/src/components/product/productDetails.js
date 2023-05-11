@@ -3,6 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 
 class ProductDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ratingValue: 0,
+    };
+    this.handleRatingChange = this.handleRatingChange.bind(this);
+  }
+
+  handleRatingChange(e) {
+    this.setState({ ratingValue: e.target.value }, () => {
+      // console.log(this.state.searchField);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -11,6 +25,7 @@ class ProductDetails extends Component {
             {this.props.ProductDetails.productName}
           </h2>
         </div>
+
         <div className="d-flex justify-content-between padding">
           <div className="in-stock text-red">
             {this.props.ProductDetails.countLeft} left in stock
@@ -29,6 +44,7 @@ class ProductDetails extends Component {
             </span>
           </div>
         </div>
+
         <div className="padding">
           <p>
             by{" "}
@@ -37,7 +53,9 @@ class ProductDetails extends Component {
             </a>
           </p>
         </div>
+
         <p className="text-brown padding">Category(s)</p>
+
         <div className="padding">
           <ul className="text-brown">
             {this.props.ProductDetails.categories.map((item) => (
@@ -45,6 +63,7 @@ class ProductDetails extends Component {
             ))}
           </ul>
         </div>
+
         <div className="d-flex justify-content-between margin-right bg-white p-2 shadow-sm card-section">
           <div className="text-brown padding-left margin-top">
             <p className="font-800">{this.props.ProductDetails.price}$</p>
@@ -55,6 +74,7 @@ class ProductDetails extends Component {
             </button>
           </div>
         </div>
+
         <div className="d-flex justify-content-between margin-right p-2">
           <div className="">
             <p className="margin-bottom">rate now</p>
@@ -112,7 +132,23 @@ class ProductDetails extends Component {
             </p>
           </div>
           <div className="">
-            <button className="btn rate-submit-button" type="submit">
+            <input
+              type="number"
+              min={0}
+              max={10}
+              className="form-control"
+              placeholder="Rating"
+              required
+              value={this.state.ratingValue}
+              onChange={this.handleRatingChange}
+            />
+            <button
+              className="btn rate-submit-button"
+              type="submit"
+              onClick={(event) =>
+                this.props.onAddRating(event, this.state.ratingValue)
+              }
+            >
               submit
             </button>
           </div>
