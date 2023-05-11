@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Login from "./components/login/login";
+// import Login from "./components/login/login";
 import Error from "./components/errors/error";
 import Product from "./components/product/product";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +11,8 @@ import User from "./components/user/user";
 import Home from "./components/home/home";
 import Provider from "./components/provider/provider";
 import Logout from "./components/logout/logout";
+import Register from "./components/register/register";
+import Login from "./components/login/login";
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+
+        <Route path="/register">
+          <Register />
         </Route>
 
         <Route path="/commodities/:productId" component={Product} />

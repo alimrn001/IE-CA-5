@@ -86,6 +86,11 @@ public class Baloot {
     }
 
 
+    public boolean userExists(String username) {
+        return usersManager.userExists(username);
+    }
+
+
     public boolean commodityExists(int commodityId) {
         return commoditiesManager.commodityExists(commodityId);
     }

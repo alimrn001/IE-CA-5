@@ -116,7 +116,7 @@ class Login extends Component {
             </form>
 
             <div className="reg-link">
-              <a className="reg-msg" href="register.html">
+              <a className="reg-msg" href="../register">
                 <b>Register now</b>
               </a>
             </div>

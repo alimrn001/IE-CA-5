@@ -26,10 +26,10 @@ class Nav extends Component {
               <li className="nav-item">
                 <a
                   className="btn btn-primary btn-register"
-                  href="../register"
+                  href="../login"
                   role="button"
                 >
-                  Register
+                  Login
                 </a>
               </li>
             </ul>
