@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../nav";
-import Footer from "./footer";
+import Footer from "../product/footer";
 import "../../assets/styles/register-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "../../api/axios";

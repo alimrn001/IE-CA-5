@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../nav";
-import Footer from "./footer";
+import Footer from "../footer";
 import "../../assets/styles/home-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";

@@ -10,7 +10,7 @@ import spaghettiImg from "../../assets/img/spaghetti.png";
 import microphoneImg from "../../assets/img/microphone.png";
 import cartImg from "../../assets/img/Vector (2).png";
 import historyImg from "../../assets/img/Vector (3).png";
-import Footer from "./footer";
+import Footer from "../product/footer";
 import CartTable from "./cartTable";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";

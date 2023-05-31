@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Baloot from "../../assets/img/Baloot.svg";
 import React, { Component } from "react";
 import Nav from "../nav";
-import Footer from "./footer";
+import Footer from "../footer";
 
 class Error extends Component {
   render() {
