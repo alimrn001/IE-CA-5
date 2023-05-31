@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "./nav";
+import Nav from "../nav";
 import Footer from "./footer";
 import "../../assets/styles/login-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -74,7 +74,7 @@ class Login extends Component {
   render() {
     return (
       <div className="bg-light">
-        <Nav />
+        <Nav loginPage={true}/>
         <div className="page-body">
           <div className="form">
             <h2>Baloot Account Login</h2>

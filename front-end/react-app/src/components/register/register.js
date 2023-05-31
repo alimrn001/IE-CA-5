@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "./nav";
+import Nav from "../nav";
 import Footer from "./footer";
 import "../../assets/styles/register-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -99,7 +99,7 @@ class Register extends Component {
   render() {
     return (
       <div className="bg-light">
-        <Nav />
+        <Nav registerPage={true}/>
         <div className="page-body">
           <div className="form">
             <h2>Register in Baloot</h2>

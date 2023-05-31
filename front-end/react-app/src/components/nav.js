@@ -1,6 +1,6 @@
-import "../../assets/styles/product-styles.css";
+import "../assets/styles/product-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Baloot from "../../assets/img/Baloot.svg";
+import Baloot from "../assets/img/Baloot.svg";
 import React, { Component, useState } from "react";
 
 const searchOptions = ["name", "category", "provider"];
@@ -48,7 +48,8 @@ class Nav extends Component {
                 </a>
                 <a className="app-name-navbar align-middle">Baloot</a>
               </div>
-
+              {
+                this.props.onSearch &&
               <div className="input-group search-form">
                 <form
                   onSubmit={(event) =>
@@ -80,8 +81,10 @@ class Nav extends Component {
                   </div>
                 </form>
               </div>
-
+              }
               <div className="d-flex">
+                {       
+                !this.props.registerPage &&  
                 <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
                     <a
@@ -93,7 +96,10 @@ class Nav extends Component {
                     </a>
                   </li>
                 </ul>
+                }
 
+                {       
+                !this.props.loginPage &&  
                 <ul className="navbar-nav ">
                   <li className="nav-item">
                     <a
@@ -105,6 +111,7 @@ class Nav extends Component {
                     </a>
                   </li>
                 </ul>
+                }
               </div>
             </div>
           </nav>

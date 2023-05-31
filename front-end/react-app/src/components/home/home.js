@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "./nav";
+import Nav from "../nav";
 import Footer from "./footer";
 import "../../assets/styles/home-styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,7 +9,7 @@ import imgURL from "../../assets/img/phone.png";
 import Filter from "./filter";
 import axios from "../../api/axios";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import ReactPaginate from "react-paginate";
+// import ReactPaginate from "react-paginate";
 
 class Home extends Component {
   constructor(props) {
